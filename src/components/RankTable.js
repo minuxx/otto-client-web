@@ -5,7 +5,7 @@ function RankTable({data, column}) {
   return (
     <table
       align={'center'} width={'100%'}
-      style={{fontSize:'12px'}}
+      style={{fontSize:'12px', fontWeight:500}}
     >
       <thead>
       <tr align={'center'}>

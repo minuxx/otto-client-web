@@ -33,7 +33,7 @@ function RankLadder() {
       column={column}
       data={rankData}
     />
-    <CheckRankButton />
+    <CheckRankButton/>
   </>)
 }
 

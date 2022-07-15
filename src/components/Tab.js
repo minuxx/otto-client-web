@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px 30px;
+  font-weight: 700;
 `
 const TabItem = styled.div`
   padding: 8px;
