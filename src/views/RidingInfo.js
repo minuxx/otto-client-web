@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import BackHeader from '../components/BackHeader'
 import RidingInfoInput from '../components/RidingInfoInput'
+import RidingPictureButton from '../components/RidingPictureButton'
 
 const Wrapper = styled.div`
     padding: 30px;ß
@@ -22,6 +23,8 @@ function RidingInfo() {
             <Title>
                 오늘의 라이딩 정보를<br></br>알려주세요
             </Title>
+
+            <RidingPictureButton />
 
             <RidingInfoInput inputSetting={{ label: '오늘 달린 거리', hint: '총 주행 거리', unit: 'km' }}/>
             <RidingInfoInput inputSetting={{ label: '오늘 완료한 배달', hint: '총 배달 건수', unit: '건' }}/>
