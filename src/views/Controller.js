@@ -13,7 +13,7 @@ const Container = styled.div`
 
 function Controller() {
   const pages = [
-    <RidingInfo/>,
+    <Ranking/>,
   ];
 
   const {state: {page}} = useContext(GlobalContext)
