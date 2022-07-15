@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import styled from 'styled-components'
 import Ranking from './Ranking'
 import GlobalContext from '../contexts/store'
+import RidingInfo from './RidingInfo';
 
 
 const Container = styled.div`
