@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import styled from 'styled-components'
 import Ranking from './Ranking'
 import GlobalContext from '../contexts/store'
+import RidingInfo from './RidingInfo';
 
 
 const Container = styled.div`
@@ -12,7 +13,7 @@ const Container = styled.div`
 
 function Controller() {
   const pages = [
-    <Ranking/>,
+    <RidingInfo/>,
   ];
 
   const {state: {page}} = useContext(GlobalContext)
