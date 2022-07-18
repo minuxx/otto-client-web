@@ -20,9 +20,6 @@ const Modal = styled(motion.div)`
   background-color: #fff;
   border-radius: 20px 20px 0px 0px;
 `
-const ModalButton = styled(CheckButton)`
-  bottom: 300px;
-`
 
 function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
 
@@ -61,7 +58,7 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
         >
           test
 
-          <ModalButton text={'돌아가기'} onClick={() => setIsModalVisible(false)}/>
+          <CheckButton text={'돌아가기'} onClick={() => setIsModalVisible(false)}/>
         </Modal>
       </ModalWrapper>
     )}
