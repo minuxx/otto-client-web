@@ -132,12 +132,17 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
   }, [])
 
   const onCompleteInputPhoneNumber = useCallback(() => {
+    let regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+
     if(!checked || phoneNumber.length === 0) return
+    if(!regExp.test(phoneNumber)) {
+        alert("휴대폰번호 형식이 올바르지 않아요.")
+    }
 
     // TODO API CALL
 
     setIsModalVisible(false)
-  }, [checked, phoneNumber.length, setIsModalVisible])
+  }, [checked, phoneNumber, setIsModalVisible])
 
   console.log(phoneNumber)
 
