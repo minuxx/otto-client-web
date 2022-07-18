@@ -1,13 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import IconRemove from '../images/icon-remove.png'
 
 const Box = styled.div`
     display: flex;
+    position: relative;
     border: 1px solid #D9D9D9;
     border-radius: 15px;
 
     width: 80px;
     height: 80px;
+
+    .remove {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 84%;
+        top: -9%;
+    }
 `
 
 function RidingPicture({ file }) {
@@ -30,6 +40,7 @@ function RidingPicture({ file }) {
 
     return (
         <Box>
+            <img className="remove" src={IconRemove} alt="icon-remove" />
             <img src={imgUrl} alt="riding-capture" />
         </Box>
     )
