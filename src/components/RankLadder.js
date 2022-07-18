@@ -6,7 +6,7 @@ import CheckButton from './CheckButton'
 import {getRevenue} from '../service'
 import GlobalContext from '../contexts/store'
 
-function RankLadder({activeTab, setActiveTab}) {
+function RankLadder({activeTab}) {
   const {setState} = useContext(GlobalContext);
   const [rank, setRank] = useState([]);
 

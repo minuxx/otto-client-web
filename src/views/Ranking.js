@@ -22,7 +22,7 @@ function Ranking() {
       <Tab activeTab={activeTab} setActiveTab={setActiveTab}/>
     </HeadContainer>
 
-    <RankLadder activeTab={activeTab} setActiveTab={setActiveTab}/>
+    <RankLadder activeTab={activeTab}/>
   </>
 }
 
