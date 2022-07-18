@@ -99,7 +99,7 @@ export class AppStack extends Stack {
         });
 
         new BucketDeployment(this, 'DeployPublicStatic', {
-            sources: [Source.asset(Path.resolve(__dirname, "../dist"))],
+            sources: [Source.asset(Path.resolve(__dirname, "../build"))],
             destinationBucket: cdnBucket,
             distribution,
             distributionPaths: ["/*"]
