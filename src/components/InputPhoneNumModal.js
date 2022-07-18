@@ -118,7 +118,7 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
             <div>[필수] 마케팅 정보 활용 및 광고성 정보 수신 동의</div>[
           </AgreeReceivingInformation>
 
-          <ModalButton text={'돌아가기'} onClick={() => setIsModalVisible(false)}/>
+          <CheckButton text={'돌아가기'} onClick={() => setIsModalVisible(false)}/>
         </Modal>
       </ModalWrapper>
     )}

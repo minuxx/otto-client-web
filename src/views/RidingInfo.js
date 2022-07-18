@@ -103,9 +103,9 @@ function RidingInfo() {
   return (
     <>
       <Wrapper>
-        <BackHeader></BackHeader>
+        <BackHeader onClick={() => setState({page: 0})}/>
         <Title>
-          오늘의 라이딩 정보를<br></br>알려주세요
+          오늘의 라이딩 정보를<br/>알려주세요
         </Title>
 
         <CertificationGuide>
@@ -114,6 +114,7 @@ function RidingInfo() {
             <img src={IconCertification} alt="icon-certification"/>
             가 표시돼요
         </CertificationGuide>
+
         <CaptureGuide onClick={() => setState({page: 2})}>
           캡쳐 방법 가이드
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
