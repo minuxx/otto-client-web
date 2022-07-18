@@ -68,7 +68,12 @@ function RidingInfo() {
     if (e.target.files && e.target.files[0]) {
        setFiles(files => ([...files, e.target.files[0]]))
     }
- }, [])
+  }, [])
+
+  const onRemovePicture = useCallback((idx) => {
+    console.log("remove clicked")
+    setFiles(files => files.filter((file, index) => idx !== index))
+  }, [])
 
   return (
     <>
@@ -97,7 +102,7 @@ function RidingInfo() {
             <RidingPictureAddButton onFileChange={onFileChange}/>
 
             {files && files.map((file, index) => {
-                return <RidingPicture key={index} file={file} />
+                return <RidingPicture key={index} index={index} file={file} onRemovePicture={onRemovePicture}/>
             })}
         </RidingPictureBoard>
       </Wrapper>

@@ -20,7 +20,7 @@ const Box = styled.div`
     }
 `
 
-function RidingPicture({ file }) {
+function RidingPicture({ index, file, onRemovePicture }) {
     const [imgUrl, setImgUrl] = useState(null)
 
     const handleImgFile = useCallback(() => {
@@ -40,7 +40,7 @@ function RidingPicture({ file }) {
 
     return (
         <Box>
-            <img className="remove" src={IconRemove} alt="icon-remove" />
+            <img className="remove" src={IconRemove} alt="icon-remove" onClick={() => onRemovePicture(index)}/>
             <img src={imgUrl} alt="riding-capture" />
         </Box>
     )
