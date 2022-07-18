@@ -20,6 +20,7 @@ const PodiumBox = styled.div`
   height: 110px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  font-weight: 500;
 
   img {
     width: 30px;

@@ -24,7 +24,7 @@ function CheckRankButton() {
 
   return (
     <Wrapper>
-      <Button>10초만에 나의 순위 확인하기</Button>
+      <Button onClick={()=>window.location.reload()}>10초만에 나의 순위 확인하기</Button>
     </Wrapper>
   )
 }

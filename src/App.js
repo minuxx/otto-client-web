@@ -37,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     line-height: 1;
+    font-family: Pretendard, Helvetica;
   }
 
   ol, ul {
@@ -57,6 +58,8 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  
+  
 `
 
 function App() {
