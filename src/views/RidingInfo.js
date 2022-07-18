@@ -5,6 +5,7 @@ import CheckButton from '../components/CheckButton'
 import GlobalContext from '../contexts/store'
 import RidingPictureAddButton from '../components/RidingPictureAddButton'
 import IconRightArrowBlue from '../images/icon-right-arrow-blue.png'
+import IconCertification from '../images/icon-certification.png'
 import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 
@@ -21,8 +22,19 @@ const Title = styled.div`
 `
 
 const CertificationGuide = styled.div`
+    display: flex;
+    align-items: center;
     font-size: 14px;
     margin-top: 20px;
+
+    & > b {
+        font-weight: 700;
+    }
+
+    & > img {
+        width: 18px;
+        height: 18px;
+    }
 `
 
 const CaptureGuide = styled.div`
@@ -59,9 +71,14 @@ function RidingInfo() {
 
   const onFileChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
+        if(files.length === 4) {
+            alert("사진은 최대 4개까지 등록할 수 있어요")
+            return
+        }
+
        setFiles(files => ([...files, e.target.files[0]]))
     }
-  }, [])
+  }, [files.length])
 
   const onRemovePicture = useCallback((idx) => {
     setFiles(files => files.filter((file, index) => idx !== index))
@@ -91,7 +108,12 @@ function RidingInfo() {
           오늘의 라이딩 정보를<br></br>알려주세요
         </Title>
 
-        <CertificationGuide>배달앱 캡쳐 사진으로 인증하면 인증마크가 표시돼요</CertificationGuide>
+        <CertificationGuide>
+            배달앱 캡쳐 사진으로 인증하면&nbsp;
+            <b>인증마크</b> 
+            <img src={IconCertification} alt="icon-certification"/>
+            가 표시돼요
+        </CertificationGuide>
         <CaptureGuide>
             캡쳐 방법 가이드
             <img src={IconRightArrowBlue} alt="icon-right-arrow-blue" />
