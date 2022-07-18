@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import HighRanker from './HighRanker'
 import RankTable from './RankTable'
 import {parseAmountFormat} from './utils'
 import CheckButton from './CheckButton'
 import {getRevenue} from '../service'
+import GlobalContext from '../contexts/store'
 
 const rankData = Array.from({length: 500}, (_, idx) => ({
   rating: idx + 1,
@@ -14,6 +15,7 @@ const rankData = Array.from({length: 500}, (_, idx) => ({
 }))
 
 function RankLadder() {
+  const {setState} = useContext(GlobalContext);
 
   const column = [
     {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.rating}위</div>},
@@ -28,11 +30,11 @@ function RankLadder() {
     {title: '변동', render: () => <div style={{color: '#CACED3', fontWeight: 700}}>NEW</div>},
   ]
 
-  useEffect(()=>{
+  useEffect(() => {
     bootstrap()
-  },[])
+  }, [])
 
-  async function bootstrap (){
+  async function bootstrap() {
     console.log(await getRevenue())
   }
 
@@ -42,7 +44,7 @@ function RankLadder() {
       column={column}
       data={rankData}
     />
-    <CheckButton text={'10초만에 나의 순위 확인하기'} onClick={() => window.location.reload()}/>
+    <CheckButton text={'10초만에 나의 순위 확인하기'} onClick={() => setState({page: 1})}/>
   </>)
 }
 
