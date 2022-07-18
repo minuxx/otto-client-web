@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from 'react'
+import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react'
 import styled from 'styled-components'
 import BackHeader from '../components/BackHeader'
 import RidingInfoInput from '../components/RidingInfoInput'
@@ -63,6 +63,8 @@ const DivisionText = styled.div`
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
   const [files, setFiles] = useState([])
+  const [checkButton, setCheckButton] = useState({text: "먼저 사진을 첨부해주세요", enabled: false})
+
   const [isModalVisible,setIsModalVisible] = useState(true);
 
   const onFileChange = useCallback((e) => {
@@ -72,9 +74,22 @@ function RidingInfo() {
   }, [])
 
   const onRemovePicture = useCallback((idx) => {
-    console.log("remove clicked")
     setFiles(files => files.filter((file, index) => idx !== index))
   }, [])
+
+  const onCheckMyRidingRank = useCallback(() => {
+
+  }, [])
+
+  const checkFiles = useCallback(() => {
+    if(files.length === 0) {
+        setCheckButton(checkButton => ({...checkButton, text: "먼저 사진을 첨부해주세요", enabled: false}))
+    } else {
+        setCheckButton(checkButton => ({...checkButton, text: "나의 라이딩 순위 확인하기", enabled: true}))
+    }
+  }, [files.length])
+
+  useMemo(() => checkFiles(), [checkFiles])
 
   return (
     <>
@@ -109,7 +124,7 @@ function RidingInfo() {
       </Wrapper>
 
       <InputPhoneNumModal isModalVisible={isModalVisible} />
-      <CheckButton text={'나의 라이딩 순위 확인하기'} onClick={() => setState({page:0})}/>
+      <CheckButton text={checkButton.text} enabled={checkButton.enabled} onClick={onCheckMyRidingRank}/>
     </>
   )
 }
