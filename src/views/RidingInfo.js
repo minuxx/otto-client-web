@@ -8,6 +8,7 @@ import GlobalContext from '../contexts/store'
 import RidingPictureAddButton from '../components/RidingPictureAddButton'
 import IconRightArrowBlue from '../images/icon-right-arrow-blue.png'
 import RidingPicture from '../components/RidingPicture'
+import InputPhoneNumModal from '../components/InputPhoneNumModal'
 
 
 const Wrapper = styled.div`
@@ -62,6 +63,7 @@ const DivisionText = styled.div`
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
   const [files, setFiles] = useState([])
+  const [isModalVisible,setIsModalVisible] = useState(true);
 
   const onFileChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
@@ -105,6 +107,8 @@ function RidingInfo() {
             })}
         </RidingPictureBoard>
       </Wrapper>
+
+      <InputPhoneNumModal isModalVisible={isModalVisible} />
       <CheckButton text={'나의 라이딩 순위 확인하기'} onClick={() => setState({page:0})}/>
     </>
   )
