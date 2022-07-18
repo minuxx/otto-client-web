@@ -94,7 +94,7 @@ function RidingInfo() {
 
         {/* ver 2 */}
         <CertificationGuide>배달앱 캡쳐 사진으로 인증하면 인증마크가 표시돼요</CertificationGuide>
-        <CaptureGuide>
+        <CaptureGuide onClick={() => setState({page: 2})}>
           캡쳐 방법 가이드
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
         </CaptureGuide>
