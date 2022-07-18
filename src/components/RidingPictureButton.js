@@ -20,6 +20,16 @@ const Button = styled.div`
         height: 22px;
         margin-right: 5px;
     }
+
+    & > label {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+
+    & > input {
+        display: none;
+    }
 `
 
 function RidingPictureButton() {
@@ -27,7 +37,9 @@ function RidingPictureButton() {
     return (
         <Button>
             <img src={PictureAttach} alt="pictureAttach"/>
-            <div>배달앱 캡쳐사진 첨부하기</div>
+            <label htmlFor="riding-picture">배달앱 캡쳐사진 첨부하기</label>
+
+            <input id="riding-picture" type="file" accept="image/jpg, image/png, image/jpeg" />
         </Button>
     )
 }

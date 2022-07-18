@@ -18,6 +18,14 @@ const Title = styled.div`
   margin-top: 30px;
 `
 
+const DivisionText = styled.div`
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+
+    margin-top: 35px;
+`
+
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
 
@@ -30,6 +38,7 @@ function RidingInfo() {
         </Title>
 
         <RidingPictureButton/>
+        <DivisionText>또는 직접 입력할 수도 있어요</DivisionText>
 
         <RidingInfoInput inputSetting={{label: '오늘 달린 거리', hint: '총 주행 거리', unit: 'km'}}/>
         <RidingInfoInput inputSetting={{label: '오늘 완료한 배달', hint: '총 배달 건수', unit: '건'}}/>
