@@ -132,19 +132,15 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
   }, [])
 
   const onCompleteInputPhoneNumber = useCallback(() => {
-    let regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+    let regExp = /^\\d{11}$/
 
     if(!checked || phoneNumber.length === 0) return
-    if(!regExp.test(phoneNumber)) {
-        alert("휴대폰번호 형식이 올바르지 않아요.")
-    }
+    
 
     // TODO API CALL
 
     setIsModalVisible(false)
   }, [checked, phoneNumber, setIsModalVisible])
-
-  console.log(phoneNumber)
 
   return (<AnimatePresence>
     {isModalVisible && (
@@ -161,7 +157,7 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
           transition={{duration: 0.4}}>
           
           <Title>랭킹 등록에 이용할<br></br>전화번호를 알려주세요</Title>
-          <Input type="text" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber} maxlength="11"/>
+          <Input type="text" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber} maxLength="11"/>
 
           <AgreeReceivingInformation onClick={onToggleChecked}>
             <img src={checked ? IconChecked : IconNotChecked} alt="icon-check" />
