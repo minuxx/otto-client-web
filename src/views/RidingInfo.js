@@ -1,8 +1,6 @@
-import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react'
+import React, {useCallback, useContext, useMemo, useState} from 'react'
 import styled from 'styled-components'
 import BackHeader from '../components/BackHeader'
-import RidingInfoInput from '../components/RidingInfoInput'
-import RidingPictureButton from '../components/RidingPictureButton'
 import CheckButton from '../components/CheckButton'
 import GlobalContext from '../contexts/store'
 import RidingPictureAddButton from '../components/RidingPictureAddButton'
@@ -52,14 +50,6 @@ const RidingPictureBoard = styled.div`
     margin-top: 25px;
 `
 
-const DivisionText = styled.div`
-    display: flex;
-    justify-content: center;
-    font-size: 14px;
-
-    margin-top: 35px;
-`
-
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
   const [files, setFiles] = useState([])
@@ -78,8 +68,10 @@ function RidingInfo() {
   }, [])
 
   const onCheckMyRidingRank = useCallback(() => {
+    if(checkButton.enabled === false) return
 
-  }, [])
+
+  }, [checkButton.enabled])
 
   const checkFiles = useCallback(() => {
     if(files.length === 0) {
@@ -99,15 +91,6 @@ function RidingInfo() {
           오늘의 라이딩 정보를<br></br>알려주세요
         </Title>
 
-        {/* ver 1 */}
-        {/* <RidingPictureButton/>
-        <DivisionText>또는 직접 입력할 수도 있어요</DivisionText>
-
-        <RidingInfoInput inputSetting={{label: '오늘 달린 거리', hint: '총 주행 거리', unit: 'km'}}/>
-        <RidingInfoInput inputSetting={{label: '오늘 완료한 배달', hint: '총 배달 건수', unit: '건'}}/>
-        <RidingInfoInput inputSetting={{label: '오늘 번 돈', hint: '총 배달 수입', unit: '원'}}/> */}
-
-        {/* ver 2 */}
         <CertificationGuide>배달앱 캡쳐 사진으로 인증하면 인증마크가 표시돼요</CertificationGuide>
         <CaptureGuide>
             캡쳐 방법 가이드
