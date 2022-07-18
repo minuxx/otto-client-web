@@ -101,10 +101,10 @@ function RidingInfo() {
 
   useMemo(() => checkFiles(), [checkFiles])
 
-  const onCompleteInput = useCallback(async (phoneNumber, agreeReceivingInfo) => {
+  const onCompleteInput = useCallback(async (phoneNumber, agreeMarketing) => {
     let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
 
-    if(!agreeReceivingInfo || phoneNumber.length === 0) return
+    if(!agreeMarketing || phoneNumber.length === 0) return
     if(!regExp.test(phoneNumber)) {
         alert("휴대전화번호 형식이 올바르지 않아요")
         return
@@ -117,10 +117,15 @@ function RidingInfo() {
 
     if(result === "SUCCESS-UPLOAD") {
         setIsModalVisible(false)
+        setState({
+            page: 3, 
+            phoneNum: phoneNumber, 
+            imageCnt: files.length
+        })
     } else if(result === "FAILURE-UPLOAD") {
-
+        alert("사진올리기에 실패했어요")
     }
-  }, [files])
+  }, [files, setState])
 
   return (
     <>

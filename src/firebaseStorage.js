@@ -25,20 +25,11 @@ async function handleFirebaseUpload(path, target) {
             }
          },
          function (error) {
-            reject(null)
+            reject("FAILURE-UPLOAD")
             console.log(`upload fail: ${error}`)
          },
          function () {
             resolve("SUCCESS-UPLOAD")
-            // uploadTask.snapshot.ref
-            //    .getDownloadURL()
-            //    .then((url) => {
-            //       resolve(url)
-            //    })
-            //    .catch((error) => {
-            //       reject(null)
-            //       console.log(`upload fail: ${error}`)
-            //    })
          },
       )
    })

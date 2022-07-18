@@ -7,3 +7,7 @@ export const RankingAPI = axios.create({
 export async function getRevenue(){
   await RankingAPI.get('/rank?type=R');
 }
+
+export async function registerRidingInfo(request) {
+  await RankingAPI.post('/register', request)
+}

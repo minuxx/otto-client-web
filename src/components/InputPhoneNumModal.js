@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
 import styled from 'styled-components'
-import CheckButton from './CheckButton'
 import IconChecked from '../images/icon-checked.png'
 import IconNotChecked from '../images/icon-not-checked.png'
 

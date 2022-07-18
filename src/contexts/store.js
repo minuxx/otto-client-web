@@ -2,7 +2,9 @@ import React, {useState} from 'react'
 
 
 const initialState = {
-  page: 3,
+  page: 0,
+  phoneNum: '',
+  imageCnt: 0,
 }
 
 
