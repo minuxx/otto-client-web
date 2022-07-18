@@ -79,9 +79,9 @@ function RidingInfo() {
   return (
     <>
       <Wrapper>
-        <BackHeader></BackHeader>
+        <BackHeader onClick={() => setState({page: 0})}/>
         <Title>
-          오늘의 라이딩 정보를<br></br>알려주세요
+          오늘의 라이딩 정보를<br/>알려주세요
         </Title>
 
         {/* ver 1 */}
