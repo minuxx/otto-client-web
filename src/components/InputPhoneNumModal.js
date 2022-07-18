@@ -101,7 +101,7 @@ const CompleteButton = styled(motion.div)`
 
 function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput }) {
   const [checked, setChecked] = useState(false)
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const [phone, setPhone] = useState('')
 
   const overlayVariants = {
     visible: {
@@ -124,7 +124,7 @@ function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput
 
   const onInputPhoneNumber = useCallback((e) => {
     const { name, value } = e.target
-    setPhoneNumber((phoneNumber) => ({ ...phoneNumber, [name]: value }))
+    setPhone(phone =>  ({ ...phone, [name]: value }))
  }, [])
 
   const onToggleChecked = useCallback(() => {
@@ -146,7 +146,7 @@ function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput
           transition={{duration: 0.4}}>
           
           <Title>랭킹 등록에 이용할<br></br>전화번호를 알려주세요</Title>
-          <Input type="text" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber} maxLength="11"/>
+          <Input type="text" name="phoneNumber" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber} maxLength="11"/>
 
           <AgreeReceivingInformation onClick={onToggleChecked}>
             <img src={checked ? IconChecked : IconNotChecked} alt="icon-check" />
@@ -155,7 +155,7 @@ function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput
 
           <ButtonWT>
             <BackButton onClick={() => setIsModalVisible(false)}>돌아가기</BackButton>
-            <CompleteButton onClick={() => onCompleteInput(phoneNumber, checked)}>입력 완료</CompleteButton>
+            <CompleteButton onClick={() => onCompleteInput(phone.phoneNumber, checked)}>입력 완료</CompleteButton>
           </ButtonWT>
         </Modal>
       </ModalWrapper>

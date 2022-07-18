@@ -1,9 +1,9 @@
-import fireabse from "./config"
+import fireabse from "./firebase"
 import "firebase/compat/storage"
 
 const storage = fireabse.storage()
 
-export async function handleFirebaseUpload(path, target) {
+async function handleFirebaseUpload(path, target) {
    const date = new Date()
    const fileName = `${date.getTime()}_${target.name}`
 
@@ -42,3 +42,5 @@ export async function handleFirebaseUpload(path, target) {
       )
    })
 }
+
+export default handleFirebaseUpload

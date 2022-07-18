@@ -8,6 +8,7 @@ import IconRightArrowBlue from '../images/icon-right-arrow-blue.png'
 import IconCertification from '../images/icon-certification.png'
 import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
+import handleFirebaseUpload from '../firebaseStorage'
 
 
 const Wrapper = styled.div`
@@ -103,16 +104,18 @@ function RidingInfo() {
   const onCompleteInput = useCallback((phoneNumber, agreeReceivingInfo) => {
     let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
 
+    console.log(phoneNumber)
+
     if(!agreeReceivingInfo || phoneNumber.length === 0) return
     if(!regExp.test(phoneNumber)) {
         alert("휴대전화번호 형식이 올바르지 않아요")
         return
     }
     
-    // TODO API CALL
+    handleFirebaseUpload(phoneNumber, files[0])
 
     // setIsModalVisible(false)
-  }, [])
+  }, [files])
 
   return (
     <>
