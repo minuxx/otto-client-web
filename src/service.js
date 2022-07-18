@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const RankingAPI = axios.create({
-  baseURL: 'http://dayrider.ranking.pilot.swingmobility.dev:8080',
+  baseURL: 'https://dayrider.ranking.pilot.swingmobility.dev',
 });
 
 export async function getRevenue(){

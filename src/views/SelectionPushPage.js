@@ -3,6 +3,7 @@ import Lottie from 'lottie-react'
 import {paperAirplane} from '../images/assets'
 import styled from 'styled-components'
 import GlobalContext from '../contexts/store'
+import { registerRidingInfo } from '../service'
 
 const Wrapper = styled.div`
   padding: 30px;
@@ -47,7 +48,21 @@ const AcceptButton = styled(CommonButton)`
 `
 
 function SelectionPushPage() {
-  const {setState} = useContext(GlobalContext);
+  const { state, setState } = useContext(GlobalContext);
+
+  const messageAfterRanking = async (agree) => {
+    const result = await registerRidingInfo({ 
+        phoneNum: state.phoneNum,
+        imageCnt: state.imageCnt,
+        message: agree
+     })
+
+     if(agree) {
+        setState({ page: 4, phoneNum: '', imageCnt: 0 })
+     } else {
+        setState({ page: 0, phoneNum: '', imageCnt: 0 })
+     }
+  }
 
   return (
     <>
@@ -58,8 +73,8 @@ function SelectionPushPage() {
       </Wrapper>
 
       <CheckButtonWrapper>
-        <CancelButton onClick={()=> setState({page:0})}>괜찮아요</CancelButton>
-        <AcceptButton onClick={()=> setState({page:4})}>알림받기</AcceptButton>
+        <CancelButton onClick={()=> messageAfterRanking(false)}>괜찮아요</CancelButton>
+        <AcceptButton onClick={()=> messageAfterRanking(true)}>알림받기</AcceptButton>
       </CheckButtonWrapper>
     </>
   )
