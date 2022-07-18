@@ -17,14 +17,14 @@ const Button = styled.button`
   width: 350px;
   height: 60px;
   border-radius: 20px;
-  background-color: ${(props) => props.theme.mainBlue};
+  background-color: ${(props) => props.enabled ? props.theme.mainBlue : props.theme.greyColor};
 `
 
-function CheckButton({text, onClick}) {
+function CheckButton({text, onClick, enabled}) {
 
   return (
     <Wrapper>
-      <Button onClick={onClick}>{text}</Button>
+      <Button onClick={onClick} enabled={enabled}>{text}</Button>
     </Wrapper>
   )
 }
