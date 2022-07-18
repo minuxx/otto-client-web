@@ -12,7 +12,6 @@ import RidingPicture from '../components/RidingPicture'
 
 const Wrapper = styled.div`
   padding: 30px;
-  ß
 `
 
 const Title = styled.div`

@@ -4,6 +4,7 @@ import Ranking from './Ranking'
 import GlobalContext from '../contexts/store'
 import RidingInfo from './RidingInfo';
 import Result from './Result'
+import ImageUploadInform from './ImageUploadInform'
 
 
 const Container = styled.div`
@@ -14,7 +15,7 @@ const Container = styled.div`
 
 function Controller() {
   const pages = [
-    <Ranking/>, <RidingInfo/>, <Result/>
+    <Ranking/>, <RidingInfo/>,<ImageUploadInform />, <Result/>
   ];
 
   const {state: {page}} = useContext(GlobalContext)
