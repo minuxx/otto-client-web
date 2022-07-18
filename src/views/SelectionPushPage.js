@@ -1,0 +1,68 @@
+import React, {useContext} from 'react'
+import Lottie from 'lottie-react'
+import {paperAirplane} from '../images/assets'
+import styled from 'styled-components'
+import GlobalContext from '../contexts/store'
+
+const Wrapper = styled.div`
+  padding: 30px;
+`
+const Title = styled.div`
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 58px;
+  line-height: 32px;
+`
+const SubTitle = styled.div`
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 10px;
+`
+const CheckButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  font-size: 30px;
+  padding: 20px;
+`
+const CommonButton = styled.button`
+  width: 100%;
+  height: 60px;
+  font-size: 16px;
+  border: none;
+  color: white;
+  font-weight: 700;
+  border-radius: 20px;
+`
+const CancelButton = styled(CommonButton)`
+  background-color: #CDDEFF;
+  color: #0057FF;
+  margin-right: 5px;
+`
+const AcceptButton = styled(CommonButton)`
+  background-color: ${(props) => props.theme.mainBlue};
+  margin-left: 5px;
+`
+
+function SelectionPushPage() {
+  const {setState} = useContext(GlobalContext);
+
+  return (
+    <>
+      <Wrapper>
+        <Title>나의 라이딩 정보가 <br/> 입력되었어요!</Title>
+        <SubTitle>집계가 끝나고 랭킹에 반영되면 알려드릴까요?</SubTitle>
+        <Lottie animationData={paperAirplane} style={{marginTop: '110px'}}/>
+      </Wrapper>
+
+      <CheckButtonWrapper>
+        <CancelButton onClick={()=> setState({page:0})}>괜찮아요</CancelButton>
+        <AcceptButton onClick={()=> setState({page:4})}>알림받기</AcceptButton>
+      </CheckButtonWrapper>
+    </>
+  )
+}
+
+export default SelectionPushPage;

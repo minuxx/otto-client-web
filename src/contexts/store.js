@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 
 const initialState = {
-  page: 0,
+  page: 3,
 }
 
 

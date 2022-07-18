@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
   position: fixed;
   bottom: 20px;
   font-size: 30px;
-  display: flex;
-  justify-content: center;
 `
 const Button = styled.button`
   font-size: 16px;

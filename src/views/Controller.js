@@ -5,6 +5,7 @@ import GlobalContext from '../contexts/store'
 import RidingInfo from './RidingInfo';
 import Result from './Result'
 import ImageUploadInform from './ImageUploadInform'
+import SelectionPushPage from './SelectionPushPage'
 
 
 const Container = styled.div`
@@ -15,7 +16,7 @@ const Container = styled.div`
 
 function Controller() {
   const pages = [
-    <Ranking/>, <RidingInfo/>, <ImageUploadInform/>, <Result/>
+    <Ranking/>, <RidingInfo/>, <ImageUploadInform/>, <SelectionPushPage/>, <Result/>
   ];
 
   const {state: {page}} = useContext(GlobalContext)
