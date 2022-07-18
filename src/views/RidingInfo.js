@@ -100,6 +100,20 @@ function RidingInfo() {
 
   useMemo(() => checkFiles(), [checkFiles])
 
+  const onCompleteInput = useCallback((phoneNumber, agreeReceivingInfo) => {
+    let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
+
+    if(!agreeReceivingInfo || phoneNumber.length === 0) return
+    if(!regExp.test(phoneNumber)) {
+        alert("휴대전화번호 형식이 올바르지 않아요")
+        return
+    }
+    
+    // TODO API CALL
+
+    // setIsModalVisible(false)
+  }, [])
+
   return (
     <>
       <Wrapper>
@@ -130,7 +144,7 @@ function RidingInfo() {
       </Wrapper>
 
       <CheckButton text={checkButton.text} enabled={checkButton.enabled} onClick={onCheckMyRidingRank}/>
-      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
+      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput}/>
     </>
   )
 }

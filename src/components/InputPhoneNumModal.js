@@ -99,7 +99,7 @@ const CompleteButton = styled(motion.div)`
   background-color: ${(props) => props.theme.mainBlue};
 `
 
-function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
+function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput }) {
   const [checked, setChecked] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState('')
 
@@ -131,17 +131,6 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
     setChecked(checked => !checked)
   }, [])
 
-  const onCompleteInputPhoneNumber = useCallback(() => {
-    let regExp = /^\\d{11}$/
-
-    if(!checked || phoneNumber.length === 0) return
-    
-
-    // TODO API CALL
-
-    setIsModalVisible(false)
-  }, [checked, phoneNumber, setIsModalVisible])
-
   return (<AnimatePresence>
     {isModalVisible && (
       <ModalWrapper
@@ -166,7 +155,7 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
 
           <ButtonWT>
             <BackButton onClick={() => setIsModalVisible(false)}>돌아가기</BackButton>
-            <CompleteButton onClick={onCompleteInputPhoneNumber}>입력 완료</CompleteButton>
+            <CompleteButton onClick={() => onCompleteInput(phoneNumber, checked)}>입력 완료</CompleteButton>
           </ButtonWT>
         </Modal>
       </ModalWrapper>
