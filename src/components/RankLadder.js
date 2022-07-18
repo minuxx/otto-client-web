@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import HighRanker from './HighRanker'
 import RankTable from './RankTable'
 import {parseAmountFormat} from './utils'
 import CheckButton from './CheckButton'
+import {getRevenue} from '../service'
 
 const rankData = Array.from({length: 500}, (_, idx) => ({
   rating: idx + 1,
@@ -26,6 +27,14 @@ function RankLadder() {
     },
     {title: '변동', render: () => <div style={{color: '#CACED3', fontWeight: 700}}>NEW</div>},
   ]
+
+  useEffect(()=>{
+    bootstrap()
+  },[])
+
+  async function bootstrap (){
+    console.log(await getRevenue())
+  }
 
   return (<>
     <HighRanker/>
