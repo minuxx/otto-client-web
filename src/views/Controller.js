@@ -3,17 +3,18 @@ import styled from 'styled-components'
 import Ranking from './Ranking'
 import GlobalContext from '../contexts/store'
 import RidingInfo from './RidingInfo';
+import Result from './Result'
 
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  // background-color: ${(props) => props.theme.mainBlue};
+    // background-color: ${(props) => props.theme.mainBlue};
 `;
 
 function Controller() {
   const pages = [
-    <Ranking/>,<RidingInfo/>
+    <Ranking/>, <RidingInfo/>, <Result/>
   ];
 
   const {state: {page}} = useContext(GlobalContext)
