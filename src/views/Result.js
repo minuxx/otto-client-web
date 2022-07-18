@@ -27,10 +27,10 @@ function Result() {
     <>
       <Wrapper>
         <Title>나의 라이딩 정보가 <br/> 입력되었어요!</Title>
-        <SubTitle>집계가 끝나면 오늘의 라이더 랭킹에 반영돼요.</SubTitle>
+        <SubTitle>집계가 끝나고 랭킹에 반영되면 안내드리겠습니다.</SubTitle>
         <Lottie animationData={mopedRiderLottie} style={{marginTop: '110px'}}/>
       </Wrapper>
-      <CheckButton text={'랭킹으로 돌아가기'} onClick={() => setState({page: 0})}/>
+      <CheckButton text={'확인'} onClick={() => setState({page: 0})}/>
     </>
   )
 }

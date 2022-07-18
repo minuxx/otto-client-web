@@ -7,9 +7,9 @@ const BackButton = styled.img`
     height: 28px;
 `
 
-function BackHeader() {
+function BackHeader({onClick}) {
     return (
-        <BackButton src={leftArrow}/>
+        <BackButton src={leftArrow} onClick={onClick}/>
     )
 }
 
