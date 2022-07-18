@@ -2,7 +2,7 @@ import React from 'react'
 import HighRanker from './HighRanker'
 import RankTable from './RankTable'
 import {parseAmountFormat} from './utils'
-import CheckRankButton from './CheckRankButton'
+import CheckButton from './CheckButton'
 
 const rankData = Array.from({length: 500}, (_, idx) => ({
   rating: idx + 1,
@@ -33,7 +33,7 @@ function RankLadder() {
       column={column}
       data={rankData}
     />
-    <CheckRankButton/>
+    <CheckButton text={'10초만에 나의 순위 확인하기'} onClick={() => window.location.reload()}/>
   </>)
 }
 

@@ -20,13 +20,13 @@ const Button = styled.button`
   background-color: ${(props) => props.theme.mainBlue};
 `
 
-function CheckRankButton() {
+function CheckButton({text, onClick}) {
 
   return (
     <Wrapper>
-      <Button onClick={()=>window.location.reload()}>10초만에 나의 순위 확인하기</Button>
+      <Button onClick={onClick}>{text}</Button>
     </Wrapper>
   )
 }
 
-export default CheckRankButton;
+export default CheckButton;
