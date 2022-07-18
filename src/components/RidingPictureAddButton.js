@@ -11,7 +11,7 @@ const Box = styled.div`
     height: 80px;
 
     border: 1px solid #D9D9D9;
-    border-radius: 20px;
+    border-radius: 15px;
 
     & > img {
         width: 22px;
@@ -29,13 +29,18 @@ const Box = styled.div`
     }
 `
 
-function RidingPictureAddButton() {
+function RidingPictureAddButton({ onFileChange }) {
 
     return (
         <Box>
             <img src={IconPlus} alt="plus-icon" />
             <label htmlFor='riding-picture' />
-            <input id="riding-picture" type="file" accept="image/jpg, image/png, image/jpeg" />
+            <input 
+                id="riding-picture" 
+                type="file" 
+                multiple 
+                accept="image/jpg, image/png, image/jpeg" 
+                onChange={onFileChange}/>
         </Box>
     )
 }
