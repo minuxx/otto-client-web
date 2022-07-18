@@ -29,6 +29,7 @@ async function handleFirebaseUpload(path, target) {
             console.log(`upload fail: ${error}`)
          },
          function () {
+            resolve("SUCCESS-UPLOAD")
             // uploadTask.snapshot.ref
             //    .getDownloadURL()
             //    .then((url) => {

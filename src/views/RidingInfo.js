@@ -101,20 +101,25 @@ function RidingInfo() {
 
   useMemo(() => checkFiles(), [checkFiles])
 
-  const onCompleteInput = useCallback((phoneNumber, agreeReceivingInfo) => {
+  const onCompleteInput = useCallback(async (phoneNumber, agreeReceivingInfo) => {
     let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
-
-    console.log(phoneNumber)
 
     if(!agreeReceivingInfo || phoneNumber.length === 0) return
     if(!regExp.test(phoneNumber)) {
         alert("휴대전화번호 형식이 올바르지 않아요")
         return
     }
-    
-    handleFirebaseUpload(phoneNumber, files[0])
 
-    // setIsModalVisible(false)
+    let result = ""
+    for(const file of files) {
+        result = await handleFirebaseUpload(phoneNumber, file)
+    }
+
+    if(result === "SUCCESS-UPLOAD") {
+        setIsModalVisible(false)
+    } else if(result === "FAILURE-UPLOAD") {
+
+    }
   }, [files])
 
   return (
