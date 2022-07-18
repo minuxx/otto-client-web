@@ -15,7 +15,7 @@ function RankTable({data, column}) {
       <tbody align={'center'}>
       {data.map((row, rowIdx) => (
         <tr key={`row-${rowIdx}`}>
-          {column.map((col, colIdx) => <td key={`col-${colIdx}`} height={25} width={100}>{col.render(row)}</td>)}
+          {column.map((col, colIdx) => <td key={`col-${colIdx}`} height={25} width={100}>{col.render(row, rowIdx)}</td>)}
         </tr>
       ))}
       </tbody>

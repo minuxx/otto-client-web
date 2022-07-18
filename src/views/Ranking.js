@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import TitleText from '../components/TitleText'
@@ -13,15 +13,16 @@ const HeadContainer = styled.div`
 `
 
 function Ranking() {
+  const [activeTab, setActiveTab] = useState('R');
 
   return <>
     <HeadContainer>
       <Header/>
       <TitleText/>
-      <Tab/>
+      <Tab activeTab={activeTab} setActiveTab={setActiveTab}/>
     </HeadContainer>
 
-    <RankLadder />
+    <RankLadder activeTab={activeTab} setActiveTab={setActiveTab}/>
   </>
 }
 

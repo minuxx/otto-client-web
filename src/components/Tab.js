@@ -15,14 +15,14 @@ const TabItem = styled.div`
 
 `
 
-function Tab() {
-  const [activeTab, setActiveTab] = useState('profit');
+function Tab({activeTab, setActiveTab}) {
+
 
   return (
     <Wrapper>
-      <TabItem isActive={activeTab === 'profit'} onClick={() => setActiveTab('profit')}>수익 랭킹</TabItem>
-      <TabItem isActive={activeTab === 'count'} onClick={() => setActiveTab('count')}>건수 랭킹</TabItem>
-      <TabItem isActive={activeTab === 'distance'} onClick={() => setActiveTab('distance')}>거리 랭킹</TabItem>
+      <TabItem isActive={activeTab === 'R'} onClick={() => setActiveTab('R')}>수익 랭킹</TabItem>
+      <TabItem isActive={activeTab === 'C'} onClick={() => setActiveTab('C')}>건수 랭킹</TabItem>
+      <TabItem isActive={activeTab === 'D'} onClick={() => setActiveTab('D')}>거리 랭킹</TabItem>
     </Wrapper>
   )
 }

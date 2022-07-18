@@ -41,30 +41,43 @@ const RiderID = styled.div`
 const Amount = styled.div`
   margin-top: 5px;
   font-size: 14px;
+
   span {
     font-size: 16px;
     font-weight: 700;
   }
 `
 
-function HighRanker() {
+function HighRanker({data, activeTab}) {
+
+  function activeChange(rider) {
+    switch (activeTab) {
+      case 'R':
+        return <><span>{parseAmountFormat(rider?.totalRevenue)}</span>원</>
+      case 'C':
+        return <><span>{parseAmountFormat(rider?.totalCount)}</span>건</>
+      case 'D':
+        return <><span>{parseAmountFormat(rider?.totalDistance)}</span>km</>
+    }
+  }
+
 
   return (
     <Wrapper>
       <PodiumBox>
         <img src={silver}/>
-        <RiderID>라이더 5054</RiderID>
-        <Amount><span>{parseAmountFormat(469330)}</span>원</Amount>
+        <RiderID>{data[1]?.phoneNum ? `라이더 ${data[1].phoneNum}` : '-'}</RiderID>
+        <Amount>{activeChange(data[1])}</Amount>
       </PodiumBox>
       <WinnerBox>
         <img src={gold}/>
-        <RiderID>라이더 5054</RiderID>
-        <Amount><span>{parseAmountFormat(469330)}</span>원</Amount>
+        <RiderID>{data[0]?.phoneNum ? `라이더 ${data[0].phoneNum}` : '-'}</RiderID>
+        <Amount>{activeChange(data[0])}</Amount>
       </WinnerBox>
       <PodiumBox>
         <img src={bronze}/>
-        <RiderID>라이더 5054</RiderID>
-        <Amount><span>{parseAmountFormat(469330)}</span>원</Amount>
+        <RiderID>{data[2]?.phoneNum ? `라이더 ${data[2].phoneNum}` : '-'}</RiderID>
+        <Amount>{activeChange(data[2])}</Amount>
       </PodiumBox>
     </Wrapper>
   )

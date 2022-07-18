@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 
-
 const initialState = {
   page: 0,
   phoneNum: '',
   imageCnt: 0,
 }
-
 
 const GlobalContext = React.createContext(null)
 
