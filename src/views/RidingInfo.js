@@ -23,51 +23,51 @@ const Title = styled.div`
 `
 
 const CertificationGuide = styled.div`
-    font-size: 14px;
-    margin-top: 20px;
+  font-size: 14px;
+  margin-top: 20px;
 `
 
 const CaptureGuide = styled.div`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    font-size: 14px;
-    font-weight: 700;
-    color: #2662D5;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2662D5;
 
-    margin-top: 10px;
+  margin-top: 10px;
 
-    & > img {
-        width: 15px;
-        height: 15px;
-        margin-left: 3px;
-    }
+  & > img {
+    width: 15px;
+    height: 15px;
+    margin-left: 3px;
+  }
 `
 
 const RidingPictureBoard = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 1rem;
 
-    margin-top: 25px;
+  margin-top: 25px;
 `
 
 const DivisionText = styled.div`
-    display: flex;
-    justify-content: center;
-    font-size: 14px;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
 
-    margin-top: 35px;
+  margin-top: 35px;
 `
 
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
   const [files, setFiles] = useState([])
-  const [isModalVisible,setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const onFileChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
-       setFiles(files => ([...files, e.target.files[0]]))
+      setFiles(files => ([...files, e.target.files[0]]))
     }
   }, [])
 
@@ -95,21 +95,21 @@ function RidingInfo() {
         {/* ver 2 */}
         <CertificationGuide>배달앱 캡쳐 사진으로 인증하면 인증마크가 표시돼요</CertificationGuide>
         <CaptureGuide>
-            캡쳐 방법 가이드
-            <img src={IconRightArrowBlue} alt="icon-right-arrow-blue" />
+          캡쳐 방법 가이드
+          <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
         </CaptureGuide>
 
         <RidingPictureBoard>
-            <RidingPictureAddButton onFileChange={onFileChange}/>
+          <RidingPictureAddButton onFileChange={onFileChange}/>
 
-            {files && files.map((file, index) => {
-                return <RidingPicture key={index} index={index} file={file} onRemovePicture={onRemovePicture}/>
-            })}
+          {files && files.map((file, index) => {
+            return <RidingPicture key={index} index={index} file={file} onRemovePicture={onRemovePicture}/>
+          })}
         </RidingPictureBoard>
       </Wrapper>
 
-      <InputPhoneNumModal isModalVisible={isModalVisible} />
-      <CheckButton text={'나의 라이딩 순위 확인하기'} onClick={() => setState({page:0})}/>
+      <CheckButton text={'나의 라이딩 순위 확인하기'} onClick={() => setIsModalVisible(true)}/>
+      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
     </>
   )
 }
