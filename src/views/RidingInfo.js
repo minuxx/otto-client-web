@@ -5,6 +5,7 @@ import RidingInfoInput from '../components/RidingInfoInput'
 import RidingPictureButton from '../components/RidingPictureButton'
 import CheckButton from '../components/CheckButton'
 import GlobalContext from '../contexts/store'
+import RidingPictureAddButton from '../components/RidingPictureAddButton'
 
 const Wrapper = styled.div`
   padding: 30px;
@@ -46,7 +47,7 @@ function RidingInfo() {
         <RidingInfoInput inputSetting={{label: '오늘 번 돈', hint: '총 배달 수입', unit: '원'}}/> */}
 
         {/* ver 2 */}
-        
+        <RidingPictureAddButton />
       </Wrapper>
       <CheckButton text={'나의 라이딩 순위 확인하기'} onClick={() => setState({page:0})}/>
     </>
