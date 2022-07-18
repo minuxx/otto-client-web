@@ -66,12 +66,42 @@ const AgreeReceivingInformation = styled(motion.div)`
   }
 `
 
-const ModalButton = styled(CheckButton)`
-  bottom: 300px;
+const ButtonWT = styled(motion.div)`
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+
+  margin-top: 40px;
+`
+
+const BackButton = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  border: none;
+  height: 60px;
+  border-radius: 20px;
+  background-color: ${(props) => props.theme.greyColor};
+
+  margin-right: 10px;
+`
+
+const CompleteButton = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  border: none;
+  height: 60px;
+  border-radius: 20px;
+  background-color: ${(props) => props.theme.mainBlue};
 `
 
 function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
   const [checked, setChecked] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState('')
 
   const overlayVariants = {
     visible: {
@@ -92,9 +122,24 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
     }
   };
 
+  const onInputPhoneNumber = useCallback((e) => {
+    const { name, value } = e.target
+    setPhoneNumber((phoneNumber) => ({ ...phoneNumber, [name]: value }))
+ }, [])
+
   const onToggleChecked = useCallback(() => {
     setChecked(checked => !checked)
   }, [])
+
+  const onCompleteInputPhoneNumber = useCallback(() => {
+    if(!checked || phoneNumber.length === 0) return
+
+    // TODO API CALL
+
+    setIsModalVisible(false)
+  }, [checked, phoneNumber.length, setIsModalVisible])
+
+  console.log(phoneNumber)
 
   return (<AnimatePresence>
     {isModalVisible && (
@@ -111,14 +156,17 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible}) {
           transition={{duration: 0.4}}>
           
           <Title>랭킹 등록에 이용할<br></br>전화번호를 알려주세요</Title>
-          <Input type="text" placeholder="하이픈(-) 없이 입력해주세요" />
+          <Input type="text" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber} maxlength="11"/>
 
           <AgreeReceivingInformation onClick={onToggleChecked}>
             <img src={checked ? IconChecked : IconNotChecked} alt="icon-check" />
-            <div>[필수] 마케팅 정보 활용 및 광고성 정보 수신 동의</div>[
+            <div>[필수] 마케팅 정보 활용 및 광고성 정보 수신 동의</div>
           </AgreeReceivingInformation>
 
-          <CheckButton text={'돌아가기'} onClick={() => setIsModalVisible(false)}/>
+          <ButtonWT>
+            <BackButton onClick={() => setIsModalVisible(false)}>돌아가기</BackButton>
+            <CompleteButton onClick={onCompleteInputPhoneNumber}>입력 완료</CompleteButton>
+          </ButtonWT>
         </Modal>
       </ModalWrapper>
     )}
