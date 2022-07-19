@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import bronze from '../images/bronze.png'
 import silver from '../images/silver.png'
 import gold from '../images/gold.png'
-import {parseAmountFormat} from './utils'
+import {parseAmountFormat, parsePhoneNum} from './utils'
 
 const Wrapper = styled.div`
   margin: 15px;
@@ -66,17 +66,17 @@ function HighRanker({data, activeTab}) {
     <Wrapper>
       <PodiumBox>
         <img src={silver}/>
-        <RiderID>{data[1]?.phoneNum ? `라이더 ${data[1].phoneNum}` : '-'}</RiderID>
+        <RiderID>{data[1]?.phoneNum ? `라이더 ${parsePhoneNum(data[1].phoneNum)}` : '-'}</RiderID>
         <Amount>{activeChange(data[1])}</Amount>
       </PodiumBox>
       <WinnerBox>
         <img src={gold}/>
-        <RiderID>{data[0]?.phoneNum ? `라이더 ${data[0].phoneNum}` : '-'}</RiderID>
+        <RiderID>{data[0]?.phoneNum ? `라이더 ${parsePhoneNum(data[0].phoneNum)}` : '-'}</RiderID>
         <Amount>{activeChange(data[0])}</Amount>
       </WinnerBox>
       <PodiumBox>
         <img src={bronze}/>
-        <RiderID>{data[2]?.phoneNum ? `라이더 ${data[2].phoneNum}` : '-'}</RiderID>
+        <RiderID>{data[2]?.phoneNum ? `라이더 ${parsePhoneNum(data[2].phoneNum)}` : '-'}</RiderID>
         <Amount>{activeChange(data[2])}</Amount>
       </PodiumBox>
     </Wrapper>
