@@ -21,12 +21,12 @@ const SubTitle = styled.div`
 `
 const CheckButtonWrapper = styled.div`
   width: 100%;
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  position: fixed;
-  bottom: 0;
   font-size: 30px;
   padding: 20px;
+  bottom: 0;
 `
 const CommonButton = styled.button`
   width: 100%;

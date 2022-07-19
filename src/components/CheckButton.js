@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   position: fixed;
   bottom: 20px;
   font-size: 30px;
+  left: 0;
 `
 const Button = styled.button`
   font-size: 16px;
@@ -17,6 +18,7 @@ const Button = styled.button`
   width: 350px;
   height: 60px;
   border-radius: 20px;
+  margin: 0 20px;
   background-color: ${(props) => props.enabled ? props.theme.mainBlue : props.theme.greyColor};
 `
 

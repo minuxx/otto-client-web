@@ -28,6 +28,10 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
   }
 
+  html{
+    background-color: blue;
+  }
+
   /* HTML5 display-role reset for older browsers */
 
   article, aside, details, figcaption, figure,
@@ -38,6 +42,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1;
     font-family: Pretendard, Helvetica;
+    max-width: 430px;
+    margin: 0 auto;
+    background-color: white;
   }
 
   ol, ul {
