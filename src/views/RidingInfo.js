@@ -10,6 +10,7 @@ import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 import handleFirebaseUpload from '../firebaseStorage'
 import ImgBanner from '../images/img-banner.png'
+import { CircularProgress } from '@mui/material'
 
 
 const Wrapper = styled.div`
@@ -104,12 +105,22 @@ const Bannder = styled.div`
   }
 `
 
+const LoadingWT = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+`
+
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
   const [files, setFiles] = useState([])
   const [checkButton, setCheckButton] = useState({text: "먼저 사진을 첨부해주세요", enabled: false})
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const onFileChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
@@ -151,7 +162,7 @@ function RidingInfo() {
         return
     }
 
-    
+    setLoading(true)
     for(const file of files) {
         const result = await handleFirebaseUpload(phoneNumber, file)
 
@@ -161,6 +172,7 @@ function RidingInfo() {
         }
     }
 
+    setLoading(false)
     setIsModalVisible(false)
     setState({
         page: 3,
@@ -205,6 +217,12 @@ function RidingInfo() {
           })}
         </RidingPictureBoard>
       </Wrapper>
+
+      {loading && 
+        <LoadingWT>
+            <CircularProgress />
+        </LoadingWT> 
+      }
 
       <CheckButton text={checkButton.text} enabled={checkButton.enabled} onClick={onCheckMyRidingRank}/>
       <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput}/>
