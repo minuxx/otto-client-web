@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import HighRanker from './HighRanker'
 import RankTable from './RankTable'
-import {parseAmountFormat} from './utils'
+import {parseAmountFormat, parsePhoneNum} from './utils'
 import CheckButton from './CheckButton'
 import {getRevenue} from '../service'
 import GlobalContext from '../contexts/store'
@@ -25,7 +25,7 @@ const activeColumn = () => {
     case 'R':
       return [
         {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.revenueRanking}위</div>},
-        {title: '라이더', render: (row) => <div>라이더 {row.phoneNum}</div>},
+        {title: '라이더', render: (row) => <div>라이더 {parsePhoneNum(row.phoneNum)}</div>},
         {
           title: '수익',
           render: (row) => (
@@ -47,7 +47,7 @@ const activeColumn = () => {
     case 'C':
       return [
         {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.countRanking}위</div>},
-        {title: '라이더', render: (row) => <div>라이더 {row.phoneNum}</div>},
+        {title: '라이더', render: (row) => <div>라이더 {parsePhoneNum(row.phoneNum)}</div>},
         {
           title: '건수',
           render: (row) => (
@@ -67,7 +67,7 @@ const activeColumn = () => {
     case 'D':
       return [
         {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.distanceRanking}위</div>},
-        {title: '라이더', render: (row) => <div>라이더 {row.phoneNum}</div>},
+        {title: '라이더', render: (row) => <div>라이더 {parsePhoneNum(row.phoneNum)}</div>},
         {
           title: '거리',
           render: (row) => (
