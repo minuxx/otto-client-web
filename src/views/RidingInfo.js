@@ -163,6 +163,7 @@ function RidingInfo() {
             phoneNum: phoneNumber,
             imageCnt: files.length
         })
+        localStorage.setItem('phoneNumber', phoneNumber)
     } else if(result === "FAILURE-UPLOAD") {
         alert("사진올리기에 실패했어요")
     }

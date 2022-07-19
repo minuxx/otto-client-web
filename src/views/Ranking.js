@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
 import TitleText from '../components/TitleText'
 import Tab from '../components/Tab'
 import RankLadder from '../components/RankLadder'
+import { reVisit } from '../service'
 
 
 const HeadContainer = styled.div`
@@ -14,6 +15,14 @@ const HeadContainer = styled.div`
 
 function Ranking() {
   const [activeTab, setActiveTab] = useState('R');
+
+  useEffect(() => {
+    const phoneNumber = localStorage.getItem('phoneNumber')
+
+    if(phoneNumber !== null) {
+      reVisit({ phoneNum: phoneNumber })
+    }
+  }, [])
 
   return <>
     <HeadContainer>

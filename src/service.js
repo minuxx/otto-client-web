@@ -11,3 +11,7 @@ export async function getRevenue(activeTab) {
 export async function registerRidingInfo(request) {
   await RankingAPI.post('/register', request)
 }
+
+export async function reVisit(request) {
+  await RankingAPI.post('/re-visit', request)
+}
