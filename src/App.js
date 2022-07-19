@@ -27,10 +27,7 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
   }
-
-  html{
-    background-color: blue;
-  }
+  
 
   /* HTML5 display-role reset for older browsers */
 
@@ -45,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 430px;
     margin: 0 auto;
     background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
 
   ol, ul {
@@ -65,8 +63,6 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  
-  
 `
 
 function App() {

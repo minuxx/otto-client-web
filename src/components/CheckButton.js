@@ -20,6 +20,7 @@ const Button = styled.button`
   border-radius: 20px;
   margin: 0 20px;
   background-color: ${(props) => props.enabled ? props.theme.mainBlue : props.theme.greyColor};
+  cursor: pointer;
 `
 
 function CheckButton({text, onClick, enabled}) {
