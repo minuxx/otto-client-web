@@ -9,10 +9,11 @@ import IconCertification from '../images/icon-certification.png'
 import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 import handleFirebaseUpload from '../firebaseStorage'
+import ImgBanner from '../images/img-banner.png'
 
 
 const Wrapper = styled.div`
-  padding: 30px;
+  padding: 30px 0px 30px 0px;
 `
 
 const Title = styled.div`
@@ -20,6 +21,8 @@ const Title = styled.div`
   font-weight: 800;
   line-height: 30px;
   margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 `
 
 const CertificationGuide = styled.div`
@@ -27,6 +30,8 @@ const CertificationGuide = styled.div`
     align-items: center;
     font-size: 14px;
     margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 10px;
 
     & > b {
         font-weight: 700;
@@ -47,6 +52,8 @@ const CaptureGuide = styled.div`
   color: #2662D5;
 
   margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
 
   & > img {
     width: 15px;
@@ -61,6 +68,22 @@ const RidingPictureBoard = styled.div`
   row-gap: 1rem;
 
   margin-top: 25px;
+  margin-left: 30px;
+  margin-right: 30px;
+`
+
+const Bannder = styled.div`
+  overflow:scroll;
+  width: 100%;
+  -ms-overflow-style: none;
+
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  & > img {
+    height: 80px;
+  }
 `
 
 function RidingInfo() {
@@ -146,6 +169,10 @@ function RidingInfo() {
           캡쳐 방법 가이드
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
         </CaptureGuide>
+
+        <Bannder>
+            <img src={ImgBanner} alt="img-banner" />
+        </Bannder>
 
         <RidingPictureBoard>
           <RidingPictureAddButton onFileChange={onFileChange}/>
