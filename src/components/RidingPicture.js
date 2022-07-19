@@ -18,6 +18,11 @@ const Box = styled.div`
         left: 84%;
         top: -9%;
     }
+
+    .riding-picture {
+        width: 100%;
+        object-fit: contain;
+    }
 `
 
 function RidingPicture({ index, file, onRemovePicture }) {
@@ -41,7 +46,7 @@ function RidingPicture({ index, file, onRemovePicture }) {
     return (
         <Box>
             <img className="remove" src={IconRemove} alt="icon-remove" onClick={() => onRemovePicture(index)}/>
-            <img src={imgUrl} alt="riding-capture" />
+            <img className="riding-picture" src={imgUrl} alt="riding-capture" />
         </Box>
     )
 }
