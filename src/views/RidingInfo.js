@@ -151,22 +151,23 @@ function RidingInfo() {
         return
     }
 
-    let result = ""
+    
     for(const file of files) {
-        result = await handleFirebaseUpload(phoneNumber, file)
+        const result = await handleFirebaseUpload(phoneNumber, file)
+
+        if(result === "FAILURE-UPLOAD") {
+            alert("사진올리기에 실패했어요")
+            return
+        }
     }
 
-    if(result === "SUCCESS-UPLOAD") {
-        setIsModalVisible(false)
-        setState({
-            page: 3,
-            phoneNum: phoneNumber,
-            imageCnt: files.length
-        })
-        localStorage.setItem('phoneNumber', phoneNumber)
-    } else if(result === "FAILURE-UPLOAD") {
-        alert("사진올리기에 실패했어요")
-    }
+    setIsModalVisible(false)
+    setState({
+        page: 3,
+        phoneNum: phoneNumber,
+        imageCnt: files.length
+    })
+    localStorage.setItem('phoneNumber', phoneNumber)
   }, [files, setState])
 
   return (
