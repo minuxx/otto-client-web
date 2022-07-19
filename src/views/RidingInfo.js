@@ -16,6 +16,10 @@ const Wrapper = styled.div`
   padding: 30px 0px 30px 0px;
 `
 
+const Header = styled.div`
+    padding-left: 30px;
+`
+
 const Title = styled.div`
   font-size: 24px;
   font-weight: 800;
@@ -153,7 +157,10 @@ function RidingInfo() {
   return (
     <>
       <Wrapper>
-        <BackHeader onClick={() => setState({page: 0})}/>
+        <Header>
+            <BackHeader onClick={() => setState({page: 0})}/>
+        </Header>
+        
         <Title>
           오늘의 라이딩 정보를<br/>알려주세요
         </Title>
