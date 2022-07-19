@@ -15,19 +15,17 @@ function RankLadder({activeTab}) {
     if (changeValue > 0) {
       return <div style={{color: 'red', fontWeight: 700}}>{changeValue} &#9650;</div>;
     } else if (changeValue < 0) {
-      // console.log(changeValue)
       return <div style={{color: 'blue', fontWeight: 700}}>{changeValue} &#9660;</div>;
     } else
       return <div style={{color: '#CACED3', fontWeight: 700}}>NEW</div>;
   }
-
 
 const activeColumn = () => {
   switch (activeTab) {
     case 'R':
       return [
         {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.revenueRanking}위</div>},
-        {title: '라이더', render: (row) => <div>라이더{row.phoneNum}</div>},
+        {title: '라이더', render: (row) => <div>라이더 {row.phoneNum}</div>},
         {
           title: '수익',
           render: (row) => (
@@ -42,7 +40,6 @@ const activeColumn = () => {
         {
           title: '변동',
           render: (row) => {
-            // console.log('rrankingChange',row.rrankingChange)
             return rankingChange(row.rrankingChange)
           }
         },
@@ -50,7 +47,7 @@ const activeColumn = () => {
     case 'C':
       return [
         {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.countRanking}위</div>},
-        {title: '라이더', render: (row) => <div>라이더{row.phoneNum}</div>},
+        {title: '라이더', render: (row) => <div>라이더 {row.phoneNum}</div>},
         {
           title: '건수',
           render: (row) => (
@@ -70,7 +67,7 @@ const activeColumn = () => {
     case 'D':
       return [
         {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.distanceRanking}위</div>},
-        {title: '라이더', render: (row) => <div>라이더{row.phoneNum}</div>},
+        {title: '라이더', render: (row) => <div>라이더 {row.phoneNum}</div>},
         {
           title: '거리',
           render: (row) => (

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, {useCallback, useState} from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
 import styled from 'styled-components'
 import IconChecked from '../images/icon-checked.png'
@@ -40,7 +40,7 @@ const Input = styled(motion.input)`
   border-bottom: 1px solid #E5E5E5;
 
   &:focus {
-      outline: none;
+    outline: none;
   }
 
   &::placeholder {
@@ -55,12 +55,12 @@ const AgreeReceivingInformation = styled(motion.div)`
   text-decoration: underline;
   cursor: pointer;
 
-  margin-top: 72px;
+  margin-top: 10px;
 
   & > img {
     width: 24px;
     height: 24px;
-    
+
     margin-right: 10px;
   }
 `
@@ -100,8 +100,8 @@ const CompleteButton = styled(motion.div)`
   cursor: pointer;
 `
 
-function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput }) {
-  const [checked, setChecked] = useState(false)
+function InputPhoneNumModal({isModalVisible, setIsModalVisible, onCompleteInput}) {
+  const [checked, setChecked] = useState({marketing: false, termsAndConditions: false, personalInformation: false})
   const [phone, setPhone] = useState('')
 
   const overlayVariants = {
@@ -124,12 +124,8 @@ function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput
   };
 
   const onInputPhoneNumber = useCallback((e) => {
-    const { name, value } = e.target
-    setPhone(phone =>  ({ ...phone, [name]: value }))
- }, [])
-
-  const onToggleChecked = useCallback(() => {
-    setChecked(checked => !checked)
+    const {name, value} = e.target
+    setPhone(phone => ({...phone, [name]: value}))
   }, [])
 
   return (<AnimatePresence>
@@ -145,18 +141,32 @@ function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput
           animate={{y: 0}}
           exit={{y: "100vh"}}
           transition={{duration: 0.4}}>
-          
-          <Title>랭킹 등록에 이용할<br></br>전화번호를 알려주세요</Title>
-          <Input type="text" name="phoneNumber" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber} maxLength="11"/>
 
-          <AgreeReceivingInformation onClick={onToggleChecked}>
-            <img src={checked ? IconChecked : IconNotChecked} alt="icon-check" />
-            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>[필수] 마케팅 정보 활용 및 광고성 정보 수신 동의</a>
+          <Title>랭킹 등록에 이용할<br></br>전화번호를 알려주세요</Title>
+          <Input type="text" name="phoneNumber" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber}
+                 maxLength="11"/>
+
+          <AgreeReceivingInformation onClick={()=> setChecked(prev => ({...prev, termsAndConditions: !prev.termsAndConditions}))}>
+            <img src={checked.termsAndConditions ? IconChecked : IconNotChecked} alt="icon-check"/>
+            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/d25549a7e405445db1b0012b2f05a270'}>[필수]
+              서비스 이용약관 동의</a>
+          </AgreeReceivingInformation>
+
+          <AgreeReceivingInformation onClick={()=> setChecked(prev => ({...prev, personalInformation: !prev.personalInformation}))}>
+            <img src={checked.personalInformation ? IconChecked : IconNotChecked} alt="icon-check"/>
+            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/f5f6204516d5481eb92b91059110598f'}>[필수]
+              개인정보 처리방침 동의</a>
+          </AgreeReceivingInformation>
+
+          <AgreeReceivingInformation onClick={()=> setChecked(prev => ({...prev, marketing: !prev.marketing}))}>
+            <img src={checked.marketing ? IconChecked : IconNotChecked} alt="icon-check"/>
+            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>[필수]
+              마케팅 정보 활용 및 광고성 정보 수신 동의</a>
           </AgreeReceivingInformation>
 
           <ButtonWT>
             <BackButton onClick={() => setIsModalVisible(false)}>돌아가기</BackButton>
-            <CompleteButton onClick={() => onCompleteInput(phone.phoneNumber, checked)}>입력 완료</CompleteButton>
+            <CompleteButton onClick={() => onCompleteInput(phone.phoneNumber, !Object.values(checked).includes(false))}>입력 완료</CompleteButton>
           </ButtonWT>
         </Modal>
       </ModalWrapper>
