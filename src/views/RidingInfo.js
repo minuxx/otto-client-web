@@ -179,12 +179,12 @@ function RidingInfo() {
           오늘의 라이딩 정보를<br/>알려주세요
         </Title>
 
-        <CertificationGuide>
-            배달앱 캡쳐 사진으로 인증하면&nbsp;
-            <b>인증마크</b>
-            <img src={IconCertification} alt="icon-certification"/>
-            가 표시돼요
-        </CertificationGuide>
+        {/*<CertificationGuide>*/}
+        {/*    배달앱 캡쳐 사진으로 인증하면&nbsp;*/}
+        {/*    <b>인증마크</b>*/}
+        {/*    <img src={IconCertification} alt="icon-certification"/>*/}
+        {/*    가 표시돼요*/}
+        {/*</CertificationGuide>*/}
 
         <CaptureGuide onClick={() => setState({page: 2})}>
           <span>캡쳐 방법 가이드</span>
