@@ -21,6 +21,7 @@ const SubTitle = styled.div`
 `
 const CheckButtonWrapper = styled.div`
   width: 100%;
+  max-width: 430px;
   position: fixed;
   display: flex;
   justify-content: space-between;
