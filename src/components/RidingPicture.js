@@ -45,7 +45,7 @@ function RidingPicture({ index, file, onRemovePicture }) {
 
     return (
         <Box>
-            <img className="remove" src={IconRemove} alt="icon-remove" onClick={() => onRemovePicture(index)}/>
+            <img style={{cursor:'pointer'}} className="remove" src={IconRemove} alt="icon-remove" onClick={() => onRemovePicture(index)}/>
             <img className="riding-picture" src={imgUrl} alt="riding-capture" />
         </Box>
     )
