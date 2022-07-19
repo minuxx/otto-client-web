@@ -41,13 +41,13 @@ function Header() {
 
   return (
     <Wrapper>
-      <EmptySpace />
+      {/*<EmptySpace />*/}
       <HeaderTitle>
         <img src={title}/>
       </HeaderTitle>
-      <Inquire>
-        <div>문의하기</div>
-      </Inquire>
+      {/*<Inquire>*/}
+      {/*  <div>문의하기</div>*/}
+      {/*</Inquire>*/}
     </Wrapper>
   )
 }

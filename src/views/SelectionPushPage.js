@@ -42,10 +42,12 @@ const CancelButton = styled(CommonButton)`
   background-color: #CDDEFF;
   color: #0057FF;
   margin-right: 5px;
+  cursor: pointer;
 `
 const AcceptButton = styled(CommonButton)`
   background-color: ${(props) => props.theme.mainBlue};
   margin-left: 5px;
+  cursor: pointer;
 `
 
 function SelectionPushPage() {

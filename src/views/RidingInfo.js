@@ -32,7 +32,7 @@ const Title = styled.div`
 const CertificationGuide = styled.div`
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 20px;
     margin-left: 30px;
     margin-right: 10px;
@@ -58,6 +58,10 @@ const CaptureGuide = styled.div`
   margin-top: 10px;
   margin-left: 30px;
   margin-right: 30px;
+  
+  span {
+    cursor: pointer;
+  }
 
   & > img {
     width: 15px;
@@ -74,6 +78,10 @@ const RidingPictureBoard = styled.div`
   margin-top: 25px;
   margin-left: 30px;
   margin-right: 30px;
+  
+  label {
+    cursor: pointer;
+  }
 `
 
 const Bannder = styled.div`
@@ -151,8 +159,8 @@ function RidingInfo() {
     if(result === "SUCCESS-UPLOAD") {
         setIsModalVisible(false)
         setState({
-            page: 3, 
-            phoneNum: phoneNumber, 
+            page: 3,
+            phoneNum: phoneNumber,
             imageCnt: files.length
         })
     } else if(result === "FAILURE-UPLOAD") {
@@ -166,20 +174,20 @@ function RidingInfo() {
         <Header>
             <BackHeader onClick={() => setState({page: 0})}/>
         </Header>
-        
+
         <Title>
           오늘의 라이딩 정보를<br/>알려주세요
         </Title>
 
         <CertificationGuide>
             배달앱 캡쳐 사진으로 인증하면&nbsp;
-            <b>인증마크</b> 
+            <b>인증마크</b>
             <img src={IconCertification} alt="icon-certification"/>
             가 표시돼요
         </CertificationGuide>
 
         <CaptureGuide onClick={() => setState({page: 2})}>
-          캡쳐 방법 가이드
+          <span>캡쳐 방법 가이드</span>
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
         </CaptureGuide>
 

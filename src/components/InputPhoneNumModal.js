@@ -85,6 +85,7 @@ const BackButton = styled(motion.div)`
   background-color: ${(props) => props.theme.greyColor};
 
   margin-right: 10px;
+  cursor: pointer;
 `
 
 const CompleteButton = styled(motion.div)`
@@ -96,6 +97,7 @@ const CompleteButton = styled(motion.div)`
   height: 60px;
   border-radius: 20px;
   background-color: ${(props) => props.theme.mainBlue};
+  cursor: pointer;
 `
 
 function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput }) {
@@ -149,7 +151,7 @@ function InputPhoneNumModal({ isModalVisible, setIsModalVisible, onCompleteInput
 
           <AgreeReceivingInformation onClick={onToggleChecked}>
             <img src={checked ? IconChecked : IconNotChecked} alt="icon-check" />
-            <div>[필수] 마케팅 정보 활용 및 광고성 정보 수신 동의</div>
+            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>[필수] 마케팅 정보 활용 및 광고성 정보 수신 동의</a>
           </AgreeReceivingInformation>
 
           <ButtonWT>
