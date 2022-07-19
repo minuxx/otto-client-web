@@ -105,15 +105,6 @@ const Bannder = styled.div`
   }
 `
 
-const LoadingWT = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-
-  justify-content: center;
-  align-items: center;
-`
-
 function RidingInfo() {
   const {setState} = useContext(GlobalContext)
   const [files, setFiles] = useState([])
@@ -218,14 +209,8 @@ function RidingInfo() {
         </RidingPictureBoard>
       </Wrapper>
 
-      {loading && 
-        <LoadingWT>
-            <CircularProgress />
-        </LoadingWT> 
-      }
-
       <CheckButton text={checkButton.text} enabled={checkButton.enabled} onClick={onCheckMyRidingRank}/>
-      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput}/>
+      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput} loading={loading}/>
     </>
   )
 }
