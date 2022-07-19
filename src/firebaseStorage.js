@@ -14,19 +14,21 @@ async function handleFirebaseUpload(path, target) {
          "state_changed",
          function (snapshot) {
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            console.log("Upload is " + progress + "% done")
+            // console.log("Upload is " + progress + "% done")
             switch (snapshot.state) {
                case fireabse.storage.TaskState.PAUSED:
-                  console.log("Upload is paused")
+                //   console.log("Upload is paused")
                   break
                case fireabse.storage.TaskState.RUNNING:
-                  console.log("Upload is running")
+                //   console.log("Upload is running")
                   break
+                default:
+                    break
             }
          },
          function (error) {
             reject("FAILURE-UPLOAD")
-            console.log(`upload fail: ${error}`)
+            // console.log(`upload fail: ${error}`)
          },
          function () {
             resolve("SUCCESS-UPLOAD")

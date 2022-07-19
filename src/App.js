@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
   }
+  
 
   /* HTML5 display-role reset for older browsers */
 
@@ -38,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1;
     font-family: Pretendard, Helvetica;
+    width: 100%;
   }
 
   ol, ul {
@@ -59,7 +61,10 @@ const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
   
-  
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
 `
 
 function App() {

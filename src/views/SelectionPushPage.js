@@ -21,12 +21,13 @@ const SubTitle = styled.div`
 `
 const CheckButtonWrapper = styled.div`
   width: 100%;
+  max-width: 430px;
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  position: fixed;
-  bottom: 0;
   font-size: 30px;
   padding: 20px;
+  bottom: 0;
 `
 const CommonButton = styled.button`
   width: 100%;
@@ -41,10 +42,12 @@ const CancelButton = styled(CommonButton)`
   background-color: #CDDEFF;
   color: #0057FF;
   margin-right: 5px;
+  cursor: pointer;
 `
 const AcceptButton = styled(CommonButton)`
   background-color: ${(props) => props.theme.mainBlue};
   margin-left: 5px;
+  cursor: pointer;
 `
 
 function SelectionPushPage() {

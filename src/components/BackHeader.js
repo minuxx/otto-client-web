@@ -5,6 +5,7 @@ import leftArrow from '../images/left-arrow.png'
 const BackButton = styled.img`
     widht: 28px;
     height: 28px;
+    cursor: pointer;
 `
 
 function BackHeader({onClick}) {

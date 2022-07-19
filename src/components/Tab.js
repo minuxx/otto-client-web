@@ -12,7 +12,7 @@ const TabItem = styled.div`
   opacity: 0.5;
   border-bottom: ${(props) => props.isActive && '2px solid white'};
   opacity: ${(props) => props.isActive && 1};
-
+  cursor: pointer;
 `
 
 function Tab({activeTab, setActiveTab}) {
