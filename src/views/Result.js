@@ -28,7 +28,7 @@ function Result() {
       <Wrapper>
         <Title>랭킹에 반영되면 <br/> 알려드릴게요</Title>
         <SubTitle>등록하신 전화번호로 알림이 발송될 예정이에요.</SubTitle>
-        <Lottie animationData={mopedRiderLottie} style={{marginTop: '110px'}}/>
+        <Lottie animationData={mopedRiderLottie} style={{marginTop: '60px'}}/>
       </Wrapper>
       <CheckButton text={'랭킹으로 돌아가기'} enabled={true} onClick={() => setState({page: 0})}/>
     </>
