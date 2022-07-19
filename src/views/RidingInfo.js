@@ -10,6 +10,7 @@ import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 import handleFirebaseUpload from '../firebaseStorage'
 import ImgBanner from '../images/img-banner.png'
+import { CircularProgress } from '@mui/material'
 
 
 const Wrapper = styled.div`
@@ -110,6 +111,7 @@ function RidingInfo() {
   const [checkButton, setCheckButton] = useState({text: "먼저 사진을 첨부해주세요", enabled: false})
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const onFileChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
@@ -142,16 +144,22 @@ function RidingInfo() {
 
   useMemo(() => checkFiles(), [checkFiles])
 
-  const onCompleteInput = useCallback(async (phoneNumber, agreeMarketing) => {
+  const onCompleteInput = useCallback(async (phoneNumber, agreeEssential, agreeMarketing) => {
     let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
 
-    if(!agreeMarketing || phoneNumber.length === 0) return
+    if(phoneNumber.length === 0) return
+
+    if(!agreeEssential) {
+        alert("필수 정보 동의란을 확인해주세요")
+        return
+    }
+
     if(!regExp.test(phoneNumber)) {
         alert("휴대전화번호 형식이 올바르지 않아요")
         return
     }
 
-    
+    setLoading(true)
     for(const file of files) {
         const result = await handleFirebaseUpload(phoneNumber, file)
 
@@ -161,11 +169,15 @@ function RidingInfo() {
         }
     }
 
+    console.log(agreeMarketing)
+
+    setLoading(false)
     setIsModalVisible(false)
     setState({
         page: 3,
         phoneNum: phoneNumber,
-        imageCnt: files.length
+        imageCnt: files.length,
+        marketing: agreeMarketing
     })
     localStorage.setItem('phoneNumber', phoneNumber)
   }, [files, setState])
@@ -207,7 +219,7 @@ function RidingInfo() {
       </Wrapper>
 
       <CheckButton text={checkButton.text} enabled={checkButton.enabled} onClick={onCheckMyRidingRank}/>
-      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput}/>
+      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput} loading={loading}/>
     </>
   )
 }
