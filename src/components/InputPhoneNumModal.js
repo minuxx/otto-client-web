@@ -160,13 +160,17 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible, onCompleteInput}
 
           <AgreeReceivingInformation onClick={()=> setChecked(prev => ({...prev, marketing: !prev.marketing}))}>
             <img src={checked.marketing ? IconChecked : IconNotChecked} alt="icon-check"/>
-            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>[필수]
+            <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>[선택]
               마케팅 정보 활용 및 광고성 정보 수신 동의</a>
           </AgreeReceivingInformation>
 
           <ButtonWT>
             <BackButton onClick={() => setIsModalVisible(false)}>돌아가기</BackButton>
-            <CompleteButton onClick={() => onCompleteInput(phone.phoneNumber, !Object.values(checked).includes(false))}>입력 완료</CompleteButton>
+            <CompleteButton onClick={() => 
+              onCompleteInput(
+                phone.phoneNumber, 
+                checked.termsAndConditions &&  checked.personalInformation, 
+                checked.marketing)}>입력 완료</CompleteButton>
           </ButtonWT>
         </Modal>
       </ModalWrapper>

@@ -153,10 +153,16 @@ function RidingInfo() {
 
   useMemo(() => checkFiles(), [checkFiles])
 
-  const onCompleteInput = useCallback(async (phoneNumber, agreeMarketing) => {
+  const onCompleteInput = useCallback(async (phoneNumber, agreeEssential, agreeMarketing) => {
     let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
 
-    if(!agreeMarketing || phoneNumber.length === 0) return
+    if(phoneNumber.length === 0) return
+
+    if(!agreeEssential) {
+        alert("필수 정보 동의란을 확인해주세요")
+        return
+    }
+
     if(!regExp.test(phoneNumber)) {
         alert("휴대전화번호 형식이 올바르지 않아요")
         return
@@ -172,12 +178,15 @@ function RidingInfo() {
         }
     }
 
+    console.log(agreeMarketing)
+
     setLoading(false)
     setIsModalVisible(false)
     setState({
         page: 3,
         phoneNum: phoneNumber,
-        imageCnt: files.length
+        imageCnt: files.length,
+        marketing: agreeMarketing
     })
     localStorage.setItem('phoneNumber', phoneNumber)
   }, [files, setState])
