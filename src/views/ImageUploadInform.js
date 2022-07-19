@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ImageUploadExample from '../components/ImageUploadExample'
 import baemin from '../images/baemin.png'
 import coupang from '../images/coupang.png'
+import barogo from '../images/barogo.png'
 import GlobalContext from '../contexts/store'
 
 const Wrapper = styled.div`
@@ -64,6 +65,16 @@ function ImageUploadInform() {
               <div style={{fontWeight: 700}}>쿠팡이츠 배달파트너 APP</div>
               <div>&rarr; 왼쪽 상단 프로필</div>
               <div>&rarr; 내 수입 &rarr; 날짜 선택 후 <span style={{fontWeight: 700}}>캡쳐</span></div>
+            </>
+          }
+        />
+
+        <ImageUploadExample
+          imgSrc={barogo}
+          informText={
+            <>
+              <div style={{fontWeight: 700}}>바로고 APP</div>
+              <div>&rarr; 매출통계 &rarr; 일별매출 <span style={{fontWeight: 700}}>캡쳐</span></div>
             </>
           }
         />
