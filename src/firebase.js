@@ -7,13 +7,13 @@ import "firebase/compat/storage"
 
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  apiKey: 'AIzaSyD_tAk5ZLaBTXLKSsDnI8eeuDMSy_SO9rU',
+  authDomain: 'riderranking.firebaseapp.com',
+  projectId: 'riderranking',
+  storageBucket: 'riderranking.appspot.com',
+  messagingSenderId: '472961625251',
+  appId: '1:472961625251:web:500c8039476df5207ee316',
+  measurementId: 'G-GT7W7R741F'
 };
 
 // const app = initializeApp(firebaseConfig);
