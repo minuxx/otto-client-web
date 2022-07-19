@@ -10,8 +10,6 @@ import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 import handleFirebaseUpload from '../firebaseStorage'
 import ImgBanner from '../images/img-banner.png'
-import { CircularProgress } from '@mui/material'
-
 
 const Wrapper = styled.div`
   padding: 30px 0px 30px 0px;
