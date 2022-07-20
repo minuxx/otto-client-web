@@ -149,7 +149,7 @@ function RidingInfo() {
         return
     }
 
-    if(!regExp.test(phoneNumber)) {
+    if(!regExp.test(phoneNumber) || phoneNumber.length < 11) {
         alert("휴대전화번호 형식이 올바르지 않아요")
         return
     }
