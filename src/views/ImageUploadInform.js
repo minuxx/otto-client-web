@@ -44,7 +44,7 @@ function ImageUploadInform() {
 
   return (
     <Wrapper>
-      <BackHeader onClick={() => setState({ page: 1 })}/>
+      <BackHeader onClick={() => setState({ page: 2 })}/>
 
       <Title>
         배달앱 캡쳐방법을<br/>확인해주세요

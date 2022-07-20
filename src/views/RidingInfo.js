@@ -178,14 +178,14 @@ function RidingInfo() {
     <>
       <Wrapper>
         <Header>
-            <BackHeader onClick={() => setState({page: 1})}/>
+            <BackHeader onClick={() => setState({page: 0})}/>
         </Header>
 
         <Title>
           캡쳐 사진을<br/>업로드해주세요
         </Title>
 
-        <CaptureGuide onClick={() => setState({page: 2})}>
+        <CaptureGuide onClick={() => setState({page: 1})}>
 
           <span>캡쳐 방법 다시보기</span>
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
