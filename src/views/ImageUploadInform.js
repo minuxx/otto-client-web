@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import ImageUploadExample from '../components/ImageUploadExample'
 import baemin from '../images/baemin.png'
 import coupang from '../images/coupang.png'
+import think from '../images/think.png'
 import barogo from '../images/barogo.png'
+import vroong from '../images/vroong.png'
 import GlobalContext from '../contexts/store'
 import CheckButton from '../components/CheckButton'
 
@@ -40,7 +42,7 @@ function ImageUploadInform() {
     <Wrapper>
       <BackHeader onClick={() => setState({page: 1})}/>
       <Title>
-        배달앱 캡쳐사진을<br/>첨부해주세요
+        배달앱 캡쳐방법을<br/>확인해주세요
       </Title>
       <InformText>
         <div>인증 지원 서비스 :</div>
@@ -71,11 +73,31 @@ function ImageUploadInform() {
         />
 
         <ImageUploadExample
+          imgSrc={think}
+          informText={
+            <>
+              <div style={{fontWeight: 700}}>생각대로 APP</div>
+              <div>&rarr; 메뉴 &rarr; 당일정산 <span style={{fontWeight: 700}}>캡쳐</span></div>
+            </>
+          }
+        />  
+
+        <ImageUploadExample
           imgSrc={barogo}
           informText={
             <>
               <div style={{fontWeight: 700}}>바로고 APP</div>
               <div>&rarr; 매출통계 &rarr; 일별매출 <span style={{fontWeight: 700}}>캡쳐</span></div>
+            </>
+          }
+        />
+
+        <ImageUploadExample
+          imgSrc={vroong}
+          informText={
+            <>
+              <div style={{fontWeight: 700}}>부릉 APP</div>
+              <div>&rarr; 정산조회 <span style={{fontWeight: 700}}>캡쳐</span></div>
             </>
           }
         />

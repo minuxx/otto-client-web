@@ -121,6 +121,7 @@ const CompleteButton = styled(motion.div)`
   background-color: ${(props) => props.theme.mainBlue};
   cursor: pointer;
 `
+
 const LoadingWT = styled.div`
   display: flex;
   width: 100%;
