@@ -106,7 +106,7 @@ return (<>
     column={activeColumn()}
     data={rank.slice(3)}
   />
-  <CheckButton text={'10초만에 나의 순위 확인하기'} enabled={true} onClick={() => setState({page: 1})}/>
+  <CheckButton text={'10초만에 나의 순위 확인하기'} enabled={true} onClick={() => setState({page: 2})}/>
 </>)
 }
 

@@ -62,9 +62,9 @@ function SelectionPushPage() {
      })
 
      if(agree) {
-        setState({ page: 4, phoneNum: '', imageCnt: 0 })
+        setState({ page: 4, phoneNum: '', imageCnt: 0, marketing: false })
      } else {
-        setState({ page: 0, phoneNum: '', imageCnt: 0 })
+        setState({ page: 0, phoneNum: '', imageCnt: 0, marketing: false })
      }
   }
 
