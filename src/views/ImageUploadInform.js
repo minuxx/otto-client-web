@@ -6,6 +6,7 @@ import baemin from '../images/baemin.png'
 import coupang from '../images/coupang.png'
 import barogo from '../images/barogo.png'
 import GlobalContext from '../contexts/store'
+import CheckButton from '../components/CheckButton'
 
 const Wrapper = styled.div`
   padding: 30px;
@@ -79,6 +80,8 @@ function ImageUploadInform() {
           }
         />
       </ImageUploadExampleWrapper>
+
+      <CheckButton text={'확인했어요!'} enabled={true} onClick={() => setState({page: 1})}/>
     </Wrapper>
   )
 }
