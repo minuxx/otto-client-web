@@ -24,6 +24,7 @@ function Ranking() {
     }
   }, [])
 
+
   return <>
     <HeadContainer>
       <Header/>

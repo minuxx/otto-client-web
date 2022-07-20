@@ -7,6 +7,7 @@ import {parseAmountFormat, parsePhoneNum} from './utils'
 
 const Wrapper = styled.div`
   margin: 15px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +18,7 @@ const PodiumBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 110px;
-  height: 110px;
+  height: 120px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   font-weight: 500;
@@ -27,7 +28,7 @@ const PodiumBox = styled.div`
   }
 `
 const WinnerBox = styled(PodiumBox)`
-  height: 125px;
+  height: 130px;
   margin: 0 10px;
 
   img {
@@ -47,8 +48,11 @@ const Amount = styled.div`
     font-weight: 700;
   }
 `
+const PlatformIcons = styled.div`
+  margin-top: 10px;
+`
 
-function HighRanker({data, activeTab}) {
+function HighRanker({data, activeTab, showPlatformIcons}) {
 
   function activeChange(rider) {
     switch (activeTab) {
@@ -61,6 +65,7 @@ function HighRanker({data, activeTab}) {
     }
   }
 
+  if (data.length === 0) return;
 
   return (
     <Wrapper>
@@ -68,16 +73,19 @@ function HighRanker({data, activeTab}) {
         <img src={silver}/>
         <RiderID>{data[1]?.phoneNum ? `라이더 ${parsePhoneNum(data[1].phoneNum)}` : '-'}</RiderID>
         <Amount>{activeChange(data[1])}</Amount>
+        <PlatformIcons>{showPlatformIcons(data[1].platformTypes)}</PlatformIcons>
       </PodiumBox>
       <WinnerBox>
         <img src={gold}/>
         <RiderID>{data[0]?.phoneNum ? `라이더 ${parsePhoneNum(data[0].phoneNum)}` : '-'}</RiderID>
         <Amount>{activeChange(data[0])}</Amount>
+        <PlatformIcons>{showPlatformIcons(data[0].platformTypes)}</PlatformIcons>
       </WinnerBox>
       <PodiumBox>
         <img src={bronze}/>
         <RiderID>{data[2]?.phoneNum ? `라이더 ${parsePhoneNum(data[2].phoneNum)}` : '-'}</RiderID>
         <Amount>{activeChange(data[2])}</Amount>
+        <PlatformIcons>{showPlatformIcons(data[2].platformTypes)}</PlatformIcons>
       </PodiumBox>
     </Wrapper>
   )

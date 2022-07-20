@@ -13,16 +13,17 @@ const Container = styled.div`
   min-height: 100vh;
   height: 100%;
   max-width: 430px;
+  min-width: 320px;
   margin: 0 auto;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-     //background-color: ${(props) => props.theme.mainBlue};
+    //background-color: ${(props) => props.theme.mainBlue};
   padding-bottom: 100px;
 `;
 
 function Controller() {
   const pages = [
-    <Ranking/>, <RidingInfo/>, <ImageUploadInform/>, <SelectionPushPage/>, <Result/>
+    <Ranking/>, <ImageUploadInform/>, <RidingInfo/>, <SelectionPushPage/>, <Result/>
   ];
 
   const {state: {page}} = useContext(GlobalContext)
