@@ -40,7 +40,7 @@ function ImageUploadInform() {
 
   return (
     <Wrapper>
-      <BackHeader onClick={() => setState({page: 1})}/>
+      <BackHeader onClick={() => setState({page: 0})}/>
       <Title>
         배달앱 캡쳐방법을<br/>확인해주세요
       </Title>
@@ -103,7 +103,7 @@ function ImageUploadInform() {
         />
       </ImageUploadExampleWrapper>
 
-      <CheckButton text={'확인했어요!'} enabled={true} onClick={() => setState({page: 1})}/>
+      <CheckButton text={'확인했어요!'} enabled={true} onClick={() => setState({page: 2})}/>
     </Wrapper>
   )
 }
