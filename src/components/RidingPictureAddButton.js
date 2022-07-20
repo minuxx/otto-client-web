@@ -38,7 +38,6 @@ function RidingPictureAddButton({ onFileChange }) {
             <input 
                 id="riding-picture" 
                 type="file" 
-                multiple 
                 accept="image/jpg, image/png, image/jpeg" 
                 onChange={onFileChange}/>
         </Box>

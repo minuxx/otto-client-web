@@ -5,7 +5,6 @@ import CheckButton from '../components/CheckButton'
 import GlobalContext from '../contexts/store'
 import RidingPictureAddButton from '../components/RidingPictureAddButton'
 import IconRightArrowBlue from '../images/icon-right-arrow-blue.png'
-import IconCertification from '../images/icon-certification.png'
 import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 import handleFirebaseUpload from '../firebaseStorage'
@@ -29,24 +28,6 @@ const Title = styled.div`
   margin-top: 30px;
   margin-left: 30px;
   margin-right: 30px;
-`
-
-const CertificationGuide = styled.div`
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 10px;
-
-    & > b {
-        font-weight: 700;
-    }
-
-    & > img {
-        width: 18px;
-        height: 18px;
-    }
 `
 
 const CaptureGuide = styled.div`
@@ -129,8 +110,8 @@ function RidingInfo() {
 
   const onFileChange = useCallback((e) => {
     if (e.target.files && e.target.files[0]) {
-        if(files.length === 4) {
-            alert("사진은 최대 4개까지 등록할 수 있어요")
+        if(files.length === 5) {
+            alert("사진은 최대 5개까지 등록할 수 있어요")
             return
         }
 
@@ -204,15 +185,8 @@ function RidingInfo() {
           캡쳐 사진을<br/>업로드해주세요
         </Title>
 
-        {/*<CertificationGuide>*/}
-        {/*    배달앱 캡쳐 사진으로 인증하면&nbsp;*/}
-        {/*    <b>인증마크</b>*/}
-        {/*    <img src={IconCertification} alt="icon-certification"/>*/}
-        {/*    가 표시돼요*/}
-        {/*</CertificationGuide>*/}
-
         <CaptureGuide onClick={() => setState({page: 2})}>
-          <span>캡쳐 방법 가이드</span>
+          <span>캡쳐 방법 다시보기</span>
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
         </CaptureGuide>
 
