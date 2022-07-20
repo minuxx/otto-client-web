@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import BackHeader from '../components/BackHeader'
 import styled from 'styled-components'
 import ImageUploadExample from '../components/ImageUploadExample'
@@ -37,6 +37,10 @@ const ImageUploadExampleWrapper = styled.div`
 
 function ImageUploadInform() {
   const {setState} = useContext(GlobalContext);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [])
 
   return (
     <Wrapper>
@@ -81,7 +85,7 @@ function ImageUploadInform() {
               <div>&rarr; 메뉴 &rarr; 당일정산 <span style={{fontWeight: 700}}>캡쳐</span></div>
             </>
           }
-        />  
+        />
 
         <ImageUploadExample
           imgSrc={barogo}
