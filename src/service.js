@@ -15,3 +15,7 @@ export async function registerRidingInfo(request) {
 export async function reVisit(request) {
   await RankingAPI.post('/re-visit', request)
 }
+
+export async function getConstant(){
+  return await RankingAPI.get('/constant');
+}

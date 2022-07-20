@@ -1,11 +1,14 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import BackHeader from '../components/BackHeader'
 import styled from 'styled-components'
 import ImageUploadExample from '../components/ImageUploadExample'
 import baemin from '../images/baemin.png'
 import coupang from '../images/coupang.png'
+import think from '../images/think.png'
 import barogo from '../images/barogo.png'
+import vroong from '../images/vroong.png'
 import GlobalContext from '../contexts/store'
+import CheckButton from '../components/CheckButton'
 
 const Wrapper = styled.div`
   padding: 30px;
@@ -35,11 +38,16 @@ const ImageUploadExampleWrapper = styled.div`
 function ImageUploadInform() {
   const {setState} = useContext(GlobalContext);
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [])
+
   return (
     <Wrapper>
-      <BackHeader onClick={() => setState({page: 1})}/>
+      <BackHeader onClick={() => setState({ page: 2 })}/>
+
       <Title>
-        배달앱 캡쳐사진을<br/>첨부해주세요
+        배달앱 캡쳐방법을<br/>확인해주세요
       </Title>
       <InformText>
         <div>인증 지원 서비스 :</div>
@@ -70,6 +78,16 @@ function ImageUploadInform() {
         />
 
         <ImageUploadExample
+          imgSrc={think}
+          informText={
+            <>
+              <div style={{fontWeight: 700}}>생각대로 APP</div>
+              <div>&rarr; 메뉴 &rarr; 당일정산 <span style={{fontWeight: 700}}>캡쳐</span></div>
+            </>
+          }
+        />
+
+        <ImageUploadExample
           imgSrc={barogo}
           informText={
             <>
@@ -78,7 +96,19 @@ function ImageUploadInform() {
             </>
           }
         />
+
+        <ImageUploadExample
+          imgSrc={vroong}
+          informText={
+            <>
+              <div style={{fontWeight: 700}}>부릉 APP</div>
+              <div>&rarr; 정산조회 <span style={{fontWeight: 700}}>캡쳐</span></div>
+            </>
+          }
+        />
       </ImageUploadExampleWrapper>
+
+      <CheckButton text={'확인했어요!'} enabled={true} onClick={() => setState({page: 2})}/>
     </Wrapper>
   )
 }

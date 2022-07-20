@@ -4,7 +4,6 @@ const initialState = {
   page: 0,
   phoneNum: '',
   imageCnt: 0,
-  marketing: false
 }
 
 const GlobalContext = React.createContext(null)
