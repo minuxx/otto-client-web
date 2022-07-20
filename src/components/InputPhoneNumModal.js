@@ -66,13 +66,34 @@ const AgreeReceivingInformation = styled(motion.div)`
   }
 `
 
+const CollectPhoneNumberGuide = styled.div`
+  font-size: 13px;
+  margin-top: 42px;
+
+  & > .title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9A9A9A;
+  }
+
+  & > .content {
+    color: #CACED3;
+    margin-top: 5px;
+    line-height: 18px;
+  }
+
+  & .link {
+    text-decoration: underline;
+  }
+`
+
 const ButtonWT = styled(motion.div)`
   display: flex;
   font-size: 16px;
   font-weight: 700;
   color: white;
 
-  margin-top: 40px;
+  margin-top: 30px;
 `
 
 const BackButton = styled(motion.div)`
@@ -111,8 +132,8 @@ const LoadingWT = styled.div`
 `
 
 function InputPhoneNumModal({isModalVisible, setIsModalVisible, onCompleteInput, loading}) {
-  const [checked, setChecked] = useState({marketing: false, termsAndConditions: false, personalInformation: false})
-  const [phone, setPhone] = useState('')
+  // const [checked, setChecked] = useState({marketing: false, termsAndConditions: false, personalInformation: false})
+  const [inputPhone, setInputPhone] = useState('')
 
   const overlayVariants = {
     visible: {
@@ -135,7 +156,7 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible, onCompleteInput,
 
   const onInputPhoneNumber = useCallback((e) => {
     const {name, value} = e.target
-    setPhone(phone => ({...phone, [name]: value}))
+    setInputPhone(inputPhone => ({...inputPhone, [name]: value}))
   }, [])
 
   return (<AnimatePresence>
@@ -156,7 +177,7 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible, onCompleteInput,
           <Input type="text" name="phoneNumber" placeholder="하이픈(-) 없이 입력해주세요" onChange={onInputPhoneNumber}
                  maxLength="11"/>
 
-          <AgreeReceivingInformation
+          {/* <AgreeReceivingInformation
             onClick={() => setChecked(prev => ({...prev, termsAndConditions: !prev.termsAndConditions}))}>
             <img src={checked.termsAndConditions ? IconChecked : IconNotChecked} alt="icon-check"/>
             <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/d25549a7e405445db1b0012b2f05a270'}>[필수]
@@ -174,15 +195,18 @@ function InputPhoneNumModal({isModalVisible, setIsModalVisible, onCompleteInput,
             <img src={checked.marketing ? IconChecked : IconNotChecked} alt="icon-check"/>
             <a target={'_blank'} href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>[선택]
               마케팅 정보 활용 및 광고성 정보 수신 동의</a>
-          </AgreeReceivingInformation>
+          </AgreeReceivingInformation> */}
+
+          <CollectPhoneNumberGuide>
+            <div className='title'>랭킹 등록 및 조회를 위해 휴대폰 번호를 수집합니다.</div>
+            <div className='content'>입력 완료를 하시면 <a target={'_blank'} className="link" href={'https://summer-echidna-7ed.notion.site/d25549a7e405445db1b0012b2f05a270'}>서비스 이용약관</a> , 
+            <a target={'_blank'} className="link" href={'https://summer-echidna-7ed.notion.site/f5f6204516d5481eb92b91059110598f'}>개인정보 처리방침</a> , 
+            <a target={'_blank'} className="link" href={'https://summer-echidna-7ed.notion.site/3310593caf624147a4f56beb0a9f2b0c'}>마케팅 수신</a> 에 동의됩니다. 동의를 거부할 수 있으나 이 경우 서비스를 이용하실 수 없습니다.</div>
+          </CollectPhoneNumberGuide>
 
           <ButtonWT>
             <BackButton onClick={() => setIsModalVisible(false)}>돌아가기</BackButton>
-            <CompleteButton onClick={() => 
-              onCompleteInput(
-                phone.phoneNumber, 
-                checked.termsAndConditions &&  checked.personalInformation, 
-                checked.marketing)}>입력 완료</CompleteButton>
+            <CompleteButton onClick={() => onCompleteInput(inputPhone.phoneNumber)}>동의 후 등록</CompleteButton>
           </ButtonWT>
         </Modal>
       </ModalWrapper>

@@ -57,14 +57,12 @@ function SelectionPushPage() {
     const result = await registerRidingInfo({ 
         phoneNum: state.phoneNum,
         imageCnt: state.imageCnt,
-        message: agree,
-        marketing: state.marketing
      })
 
      if(agree) {
-        setState({ page: 4, phoneNum: '', imageCnt: 0, marketing: false })
+        setState({ page: 4, phoneNum: '', imageCnt: 0 })
      } else {
-        setState({ page: 0, phoneNum: '', imageCnt: 0, marketing: false })
+        setState({ page: 0, phoneNum: '', imageCnt: 0 })
      }
   }
 

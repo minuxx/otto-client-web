@@ -10,6 +10,9 @@ import RidingPicture from '../components/RidingPicture'
 import InputPhoneNumModal from '../components/InputPhoneNumModal'
 import handleFirebaseUpload from '../firebaseStorage'
 import ImgBanner from '../images/img-banner.png'
+import { CircularProgress } from '@mui/material'
+import { registerRidingInfo } from '../service'
+
 
 const Wrapper = styled.div`
   padding: 30px 0px 30px 0px;
@@ -54,7 +57,7 @@ const CaptureGuide = styled.div`
   font-weight: 700;
   color: #2662D5;
 
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 30px;
   margin-right: 30px;
   
@@ -91,6 +94,10 @@ const Bannder = styled.div`
     display: none;
   }
 
+  max-width: 430px;
+  position: fixed;
+  bottom: 110px;
+
   //margin-top: 20px;
   //margin-left: 10px;
   //margin-right: 10px;
@@ -101,6 +108,15 @@ const Bannder = styled.div`
     margin-right: 10px;
     margin-left: 10px;
   }
+`
+
+const LoadingWT = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
 `
 
 function RidingInfo() {
@@ -142,13 +158,11 @@ function RidingInfo() {
 
   useMemo(() => checkFiles(), [checkFiles])
 
-  const onCompleteInput = useCallback(async (phoneNumber, agreeEssential, agreeMarketing) => {
+  const onCompleteInput = useCallback(async (phoneNumber) => {
     let regExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/
 
-    if(phoneNumber.length === 0) return
-
-    if(!agreeEssential) {
-        alert("필수 정보 동의란을 확인해주세요")
+    if(phoneNumber === undefined || phoneNumber.length === 0) {
+        alert("휴대전화번호를 입력해주세요")
         return
     }
 
@@ -163,21 +177,20 @@ function RidingInfo() {
 
         if(result === "FAILURE-UPLOAD") {
             alert("사진올리기에 실패했어요")
+            setLoading(false)
             return
         }
     }
 
-    console.log(agreeMarketing)
-
-    setLoading(false)
-    setIsModalVisible(false)
-    setState({
-        page: 3,
+    const result = await registerRidingInfo({ 
         phoneNum: phoneNumber,
         imageCnt: files.length,
-        marketing: agreeMarketing
-    })
-    localStorage.setItem('phoneNumber', phoneNumber)
+     })
+
+     setLoading(false)
+     setIsModalVisible(false)
+     setState({ page: 4 })
+     localStorage.setItem('phoneNumber', phoneNumber)
   }, [files, setState])
 
   return (
@@ -188,7 +201,7 @@ function RidingInfo() {
         </Header>
 
         <Title>
-          오늘의 라이딩 정보를<br/>알려주세요
+          캡쳐 사진을<br/>업로드해주세요
         </Title>
 
         {/*<CertificationGuide>*/}
@@ -203,10 +216,6 @@ function RidingInfo() {
           <img src={IconRightArrowBlue} alt="icon-right-arrow-blue"/>
         </CaptureGuide>
 
-        <Bannder>
-            <img src={ImgBanner} alt="img-banner" />
-        </Bannder>
-
         <RidingPictureBoard>
           <RidingPictureAddButton onFileChange={onFileChange}/>
 
@@ -216,8 +225,18 @@ function RidingInfo() {
         </RidingPictureBoard>
       </Wrapper>
 
+      {loading && 
+        <LoadingWT>
+            <CircularProgress />
+        </LoadingWT> 
+      }
+
+        <Bannder>
+            <img src={ImgBanner} alt="img-banner" />
+        </Bannder>
+
       <CheckButton text={checkButton.text} enabled={checkButton.enabled} onClick={onCheckMyRidingRank}/>
-      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput} loading={loading}/>
+      <InputPhoneNumModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} onCompleteInput={onCompleteInput}/>
     </>
   )
 }
