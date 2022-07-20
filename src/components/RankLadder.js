@@ -59,7 +59,7 @@ function RankLadder({activeTab}) {
           {
             title: '변동',
             render: (row) => {
-              return rankingChange(row.rankingChange)
+              return rankingChange(row.rrankingChange)
             }
           },
         ]
