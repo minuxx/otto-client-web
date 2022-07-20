@@ -43,7 +43,7 @@ const SubText = styled.div`
   text-align: center;
   line-height: 22px;
 
-  font-size: 15px;
+  font-size: 14px;
   color: #A9B0B9;
   margin: 10px 39px;
 `
