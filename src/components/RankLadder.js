@@ -56,12 +56,12 @@ function RankLadder({activeTab}) {
                 }}>{parseAmountFormat(row.totalRevenue)}</span>원
               </div>)
           },
-          // {
-          //   title: '변동',
-          //   render: (row) => {
-          //     return rankingChange(row.rankingChange)
-          //   }
-          // },
+          {
+            title: '변동',
+            render: (row) => {
+              return rankingChange(row.rankingChange)
+            }
+          },
         ]
       case 'C':
         return [
@@ -79,10 +79,10 @@ function RankLadder({activeTab}) {
                 }}>{parseAmountFormat(row.totalCount)}</span>건
               </div>)
           },
-          // {
-          //   title: '변동',
-          //   render: (row) => rankingChange(row.crankingChange)
-          // },
+          {
+            title: '변동',
+            render: (row) => rankingChange(row.crankingChange)
+          },
         ]
       case 'D':
         return [
@@ -100,10 +100,10 @@ function RankLadder({activeTab}) {
                 }}>{parseAmountFormat(row.totalDistance)}</span>km
               </div>)
           },
-          // {
-          //   title: '변동',
-          //   render: (row) => rankingChange(row.drankingChange)
-          // },
+          {
+            title: '변동',
+            render: (row) => rankingChange(row.drankingChange)
+          },
         ]
     }
   }

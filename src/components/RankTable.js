@@ -16,7 +16,7 @@ function RankTable({data, column}) {
       {data.map((row, rowIdx) => (
         <tr key={`row-${rowIdx}`}>
           {column.map((col, colIdx) =>
-            <td style={{verticalAlign: "middle"}} key={`col-${colIdx}`} height={35} width={100}>
+            <td style={{verticalAlign: "middle"}} key={`col-${colIdx}`} height={40} width={100}>
               <div style={{height: '100%'}}>{col.render(row, rowIdx)}</div>
             </td>)}
         </tr>

@@ -26,7 +26,7 @@ const Inquire = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  div {
+  a {
     font-size: 13px;
     width: 80px;
     text-align: center;
@@ -41,13 +41,13 @@ function Header() {
 
   return (
     <Wrapper>
-      {/*<EmptySpace />*/}
+      <EmptySpace />
       <HeaderTitle>
         <img src={title}/>
       </HeaderTitle>
-      {/*<Inquire>*/}
-      {/*  <div>문의하기</div>*/}
-      {/*</Inquire>*/}
+      <Inquire>
+        <a target={'_blank'} href={'https://open.kakao.com/o/s32uFZqe'}>문의하기</a>
+      </Inquire>
     </Wrapper>
   )
 }

@@ -7,7 +7,7 @@ import {parseAmountFormat, parsePhoneNum} from './utils'
 
 const Wrapper = styled.div`
   margin: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
