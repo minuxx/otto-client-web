@@ -20,6 +20,8 @@ function RankLadder({activeTab}) {
       return <div style={{color: 'red', fontWeight: 700}}>{changeValue} &#9650;</div>;
     } else if (changeValue < 0) {
       return <div style={{color: 'blue', fontWeight: 700}}>{changeValue} &#9660;</div>;
+    } else if (changeValue === 0) {
+      return <div style={{color: '#CACED3', fontWeight: 700}}>-</div>;
     } else
       return <div style={{color: '#CACED3', fontWeight: 700}}>NEW</div>;
   }
@@ -42,8 +44,8 @@ function RankLadder({activeTab}) {
     switch (activeTab) {
       case 'R':
         return [
-          {title: '순위', render: (row) => <div style={{ fontWeight: 700}}>{row.revenueRanking}위</div>},
-          {title: '라이더', render: (row) => <div style={{ fontWeight: 500}}>{parsePhoneNum(row.phoneNum)}님</div>},
+          {title: '순위', render: (row) => <div style={{fontWeight: 700}}>{row.revenueRanking}위</div>},
+          {title: '라이더', render: (row) => <div style={{fontWeight: 500}}>{parsePhoneNum(row.phoneNum)}님</div>},
           {title: '플랫폼', render: row => showPlatformIcons(row.platformTypes)},
           {
             title: '금액',
