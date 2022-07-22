@@ -22,6 +22,7 @@ const Container = styled.div`
 `;
 
 function Controller() {
+  console.log('test')
   const pages = [
     <Ranking/>, <ImageUploadInform/>, <RidingInfo/>, <SelectionPushPage/>, <Result/>
   ];
