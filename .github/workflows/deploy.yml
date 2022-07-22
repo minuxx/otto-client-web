@@ -2,7 +2,7 @@
 on:
   push:
     branches:
-      - master
+      - ranking-deploy
   workflow_dispatch:
 
 env:
